@@ -32,7 +32,8 @@ target/
 
 ### STS ###
 .apt_generated
-.class.classpath
+.class
+.classpath
 .factorypath
 .project
 .settings
