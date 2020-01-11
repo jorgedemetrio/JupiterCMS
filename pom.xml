@@ -41,11 +41,10 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-sleuth</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
-			<!-- <version>1.11.704</version> -->
+			<version>1.11.704</version>
 		</dependency>
 
 		<dependency>
@@ -69,6 +68,24 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.github.derjust</groupId>
+			<artifactId>spring-data-dynamodb</artifactId>
+			<version>4.3.1</version>
+			<exclusions>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-commons</artifactId>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
 		</dependency>
 	</dependencies>
 
