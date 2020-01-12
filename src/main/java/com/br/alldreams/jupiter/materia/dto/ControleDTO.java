@@ -20,17 +20,18 @@ import lombok.Data;
  */
 @Data
 @Validated
-public class Controle implements Serializable {
+public class ControleDTO implements Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = -8385563527525791192L;
 
-    private Usuario alterador;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 901403715401729183L;
+
+	private UsuarioDTO alterador;
 
     @NotNull
-    private Usuario criador;
+    private UsuarioDTO criador;
 
     @NotEmpty
     private String versao;

@@ -19,14 +19,15 @@ import lombok.Data;
  */
 @Data
 @Validated
-public class MetaDados implements Serializable {
+public class MetaDadosDTO implements Serializable {
 
-    /**
-    *
-    */
-    private static final long serialVersionUID = -3555071701298862722L;
 
-    @NotEmpty
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 5468943935167447335L;
+
+	@NotEmpty
     private String desceicao;
 
     @NotEmpty
