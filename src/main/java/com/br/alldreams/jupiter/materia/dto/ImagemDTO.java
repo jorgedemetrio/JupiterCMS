@@ -19,14 +19,14 @@ import lombok.Data;
  */
 @Data
 @Validated
-public class Imagem implements Serializable {
+public class ImagemDTO implements Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = -4171170971866403033L;
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -6911774040915872345L;
 
-    @NotEmpty
+	@NotEmpty
     private String endereco;
 
     private String desricao;

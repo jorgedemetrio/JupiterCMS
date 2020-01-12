@@ -18,13 +18,14 @@ import lombok.Data;
  */
 @Data
 @Validated
-public class Usuario implements Serializable {
-    /**
-    *
-    */
-    private static final long serialVersionUID = -5288215955799884641L;
+public class UsuarioDTO implements Serializable {
 
-    @NotEmpty
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 6475594391636433676L;
+
+	@NotEmpty
     private String nome;
 
     @NotEmpty
