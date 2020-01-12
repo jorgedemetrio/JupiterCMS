@@ -40,7 +40,7 @@ public interface MateriaConvert {
 	 * @since 12 de jan de 2020 03:42:33
 	 */
 	@Mapping(target = "id", ignore = true)
-	Materia toMateria(MateriaDTO materia, @MappingTarget Materia target);
+	Materia toMateriaCreate(MateriaDTO materia, @MappingTarget Materia target);
 
 
 
@@ -53,6 +53,6 @@ public interface MateriaConvert {
 	 * @return Retornar MateriaDTO.
 	 * @since 12 de jan de 2020 03:43:39
 	 */
-	@InheritInverseConfiguration
+	@InheritInverseConfiguration(name = "toMateria")
 	MateriaDTO toMateriaDTO(Materia materia);
 }
