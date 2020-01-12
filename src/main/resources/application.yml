@@ -1,0 +1,22 @@
+dynamodb:
+  region: us-east-1
+
+exceptions:
+  classes:
+    notfound: com.br.alldreams.jupiter.base.exception.service.ItemNaoEncontradoServiceException	
+    dadosinvalidos: com.br.alldreams.jupiter.base.exception.service.DadosInvalidosServiceException
+
+
+
+
+#Mensagens internas
+mensagens:
+  mensagens:
+    nao-encontrado:
+      descricao: "%s não encontrado."
+      codigo: "0001"
+      classe: ${exceptions.classes.notfound}
+    campos-invalidos:
+      descricao: "Campos invalidos (%s)."
+      codigo: "0002"
+      classe: ${exceptions.classes.dadosinvalidos}
