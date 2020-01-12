@@ -42,7 +42,7 @@ public class Categoria implements Serializable {
 
     @NotEmpty
     @Size(min = 1, max = 200)
-    @DynamoDBAttribute(attributeName = "category")
+	@DynamoDBAttribute(attributeName = "name")
     private String nome;
 
     @DynamoDBAttribute(attributeName = "childCategory")
