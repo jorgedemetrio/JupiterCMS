@@ -43,8 +43,23 @@ public class Site extends ControleInformacaoAlteravel implements Serializable {
     @Column(name = "google_analytics", insertable = true, updatable = true, nullable = true, length = 200)
     private String googleAnalytics;
 
+    @Column(name = "google_api_authenticator_key", insertable = true, updatable = true, nullable = true, length = 200)
+    private String googleApiAuthenticatorKey;
+
+    @Column(name = "google_api_authenticator_secret", insertable = true, updatable = true, nullable = true, length = 200)
+    private String googleApiAuthenticatorSecret;
+
+    @Column(name = "google_api_recaptcha_key", insertable = true, updatable = true, nullable = true, length = 200)
+    private String googleApiRecaptchaKey;
+
+    @Column(name = "google_api_recaptcha_secret", insertable = true, updatable = true, nullable = true, length = 200)
+    private String googleApiRecaptchaSecret;
+
     @Column(name = "facebookPixel", insertable = true, updatable = true, nullable = true, length = 200)
     private String facebookPixel;
+
+    @Column(name = "facebookApiKey", insertable = true, updatable = true, nullable = true, length = 200)
+    private String facebookApiKey;
 
     @Column(name = "headers", insertable = true, updatable = true, nullable = true, length = 2000)
     private String headers;
