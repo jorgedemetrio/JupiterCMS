@@ -23,7 +23,7 @@
 hs_err_pid*
 
 
-
+bin/
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -40,7 +40,7 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
+### IntelliJ ID/EA ###
 .idea
 *.iws
 *.iml
