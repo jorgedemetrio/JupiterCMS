@@ -27,7 +27,7 @@ hs_err_pid*
 *.iml
 *.ipr
 
-
+bin/
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -44,7 +44,7 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
+### IntelliJ ID/EA ###
 .idea
 *.iws
 *.iml
