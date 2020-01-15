@@ -4,8 +4,12 @@
 package com.br.alldreams.jupiter.materia.repository.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,7 +24,13 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class BaseConteudo extends BaseControle {
+
+	@Id
+	@Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
+	private String id;
 
 	@NotEmpty
 	@Size(min = 1, max = 250)

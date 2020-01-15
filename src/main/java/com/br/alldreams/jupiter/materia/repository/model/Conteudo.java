@@ -9,9 +9,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -35,7 +32,6 @@ import lombok.Data;
 @Validated
 @Entity
 @Table(name = "tb_content")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Conteudo extends BaseConteudo implements Serializable {
 
     /**
@@ -43,9 +39,7 @@ public class Conteudo extends BaseConteudo implements Serializable {
      */
     private static final long serialVersionUID = 1897130732286197263L;
 
-	@Id
-	@Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
-    private String id;
+
 
     @NotEmpty
     @Size(min = 1, max = 200)

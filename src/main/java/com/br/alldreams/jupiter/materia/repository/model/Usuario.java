@@ -7,9 +7,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -26,17 +23,12 @@ import lombok.Data;
 @Validated
 @Entity
 @Table(name = "tb_usuario")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Usuario extends BaseControle implements Serializable {
     /**
     *
     */
     private static final long serialVersionUID = -5288215955799884641L;
 
-
-	@Id
-	@Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
-	private String id;
 
     @NotEmpty
 	@Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
