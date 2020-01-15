@@ -40,7 +40,7 @@ public class UsuarioHistoricoSenhas implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", insertable = false, updatable = false, nullable = false)
+    @Column(name = "id", insertable = false, updatable = false, nullable = true)
     private Long id;
 
     @NotNull

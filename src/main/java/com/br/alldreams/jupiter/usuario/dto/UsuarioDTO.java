@@ -9,8 +9,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.StatusUsuarioEnum;
 import com.br.alldreams.jupiter.controle.dto.BaseControleDTO;
+import com.br.alldreams.jupiter.usuario.repository.model.StatusUsuarioEnum;
 
 import lombok.Data;
 

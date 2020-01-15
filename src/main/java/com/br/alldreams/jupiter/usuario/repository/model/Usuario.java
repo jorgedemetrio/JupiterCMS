@@ -12,8 +12,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.repository.model.BaseControle;
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.StatusUsuarioEnum;
+import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
 
 import lombok.Data;
 
@@ -26,7 +25,7 @@ import lombok.Data;
 @Validated
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario extends BaseControle implements Serializable {
+public class Usuario extends ControleInformacaoAlteravel implements Serializable {
     /**
     *
     */
@@ -45,6 +44,10 @@ public class Usuario extends BaseControle implements Serializable {
 	@NotEmpty
 	@Column(name = "pass", insertable = true, updatable = true, nullable = false, length = 200)
 	private String senha;
+
+    @NotEmpty
+    @Column(name = "key_google", insertable = true, updatable = true, nullable = false, length = 200)
+    private String chaveGoogle;
 
 	@NotEmpty
 	@Column(name = "status", insertable = true, updatable = true, nullable = false, length = 20)

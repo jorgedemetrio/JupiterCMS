@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.StatusConteudoEnum;
+import com.br.alldreams.jupiter.conteudo.repository.model.StatusConteudoEnum;
 import com.br.alldreams.jupiter.controle.dto.BaseControleDTO;
 
 import lombok.Getter;

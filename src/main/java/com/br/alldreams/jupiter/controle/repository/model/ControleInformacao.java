@@ -30,15 +30,11 @@ import lombok.Setter;
 @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class BaseControle {
+public abstract class ControleInformacao {
 
 	@Id
 	@Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
 	private String id;
-
-	@ManyToOne
-	@JoinColumn(name = "id_user_altered", insertable = true, updatable = true, nullable = true)
-	private Usuario alterador;
 
 	@NotNull
 	@ManyToOne
@@ -52,13 +48,6 @@ public abstract class BaseControle {
 	@NotEmpty
 	@Column(name = "ip_creator", insertable = true, updatable = false, nullable = false, length = 20)
 	private String ipCriador;
-
-	@NotEmpty
-	@Column(name = "ip_alterator", insertable = true, updatable = true, nullable = true, length = 20)
-	private String ipAlterador;
-
-	@Column(name = "altered_date", insertable = true, updatable = true, nullable = true)
-	private Date dataAlteracao;
 
 	@NotNull
 	@Column(name = "created_date", insertable = true, updatable = false, nullable = false)

@@ -14,8 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.StatusConteudoEnum;
-import com.br.alldreams.jupiter.controle.repository.model.BaseControle;
+import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,7 +28,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class BaseConteudo extends BaseControle {
+public abstract class BaseConteudo extends ControleInformacaoAlteravel {
 
 	@Id
 	@Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
@@ -39,6 +38,12 @@ public abstract class BaseConteudo extends BaseControle {
 	@Size(min = 1, max = 250)
 	@Column(name = "meta_description", insertable = true, updatable = true, nullable = true, length = 250)
 	private String metaDescricao;
+
+    @Column(name = "hits", insertable = true, updatable = true, nullable = true)
+    private Long acessos;
+
+    @Column(name = "likes", insertable = true, updatable = true, nullable = true)
+    private Long curtidas;
 
 	@NotEmpty
 	@Size(min = 1, max = 250)
@@ -54,5 +59,14 @@ public abstract class BaseConteudo extends BaseControle {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status", insertable = true, updatable = true, nullable = false, length = 250)
 	private StatusConteudoEnum status;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "access", insertable = true, updatable = true, nullable = false, length = 20)
+    private AcessoEnum acesso;
+
+    @NotEmpty
+    @Column(name = "idiom", insertable = true, updatable = true, nullable = false, length = 5)
+    private String idioma;
 
 }

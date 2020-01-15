@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.repository.model.BaseControle;
+import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
 
 import lombok.Data;
 
@@ -25,7 +25,7 @@ import lombok.Data;
 @Validated
 @Entity
 @Table(name = "tb_site")
-public class Site extends BaseControle implements Serializable {
+public class Site extends ControleInformacaoAlteravel implements Serializable {
 
 	/**
 	 *
