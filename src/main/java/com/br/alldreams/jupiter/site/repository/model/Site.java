@@ -40,4 +40,16 @@ public class Site extends ControleInformacaoAlteravel implements Serializable {
 	@Column(name = "dns", insertable = true, updatable = true, nullable = false, length = 200)
 	private String dns;
 
+    @Column(name = "google_analytics", insertable = true, updatable = true, nullable = true, length = 200)
+    private String googleAnalytics;
+
+    @Column(name = "facebookPixel", insertable = true, updatable = true, nullable = true, length = 200)
+    private String facebookPixel;
+
+    @Column(name = "headers", insertable = true, updatable = true, nullable = true, length = 2000)
+    private String headers;
+
+    @Column(name = "footers", insertable = true, updatable = true, nullable = true, length = 2000)
+    private String rodape;
+
 }
