@@ -5,18 +5,19 @@ package com.br.alldreams.jupiter.materia.repository;
 
 import java.util.List;
 
-import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
-import com.br.alldreams.jupiter.materia.repository.model.Materia;
+import com.br.alldreams.jupiter.materia.repository.model.Conteudo;
+
 
 /**
  * @author Jess
  * @since 11 de jan de 2020 02:14:19
  * @version 1.0
  */
-@EnableScan
-public interface MateriaRepository extends CrudRepository<Materia, String> {
+@Repository
+public interface MateriaRepository extends CrudRepository<Conteudo, String> {
 
-    public List<Materia> findByTitulo(final String titulo);
+    List<Conteudo> findByTitulo(final String titulo);
 }

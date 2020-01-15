@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.br.alldreams.jupiter.base.BaseController;
 import com.br.alldreams.jupiter.base.exception.service.ErroInternoServiceException;
-import com.br.alldreams.jupiter.materia.dto.MateriaDTO;
-import com.br.alldreams.jupiter.materia.service.MateriaService;
+import com.br.alldreams.jupiter.materia.dto.ConteudoDTO;
+import com.br.alldreams.jupiter.materia.service.ConteudoService;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
 /**
@@ -26,14 +26,14 @@ import lombok.extern.java.Log;
  */
 @Log
 @Controller
-@RequiredArgsConstructor
-public class MateriaController extends BaseController {
+public class ConteudoController extends BaseController {
 
-	private final MateriaService service;
+	@Autowired
+	private ConteudoService service;
 
 	@GetMapping("/")
 	public ModelAndView index() {
-		List<MateriaDTO> materias = null;
+		List<ConteudoDTO> materias = null;
 
 		final ModelAndView model = new ModelAndView("materia");
 

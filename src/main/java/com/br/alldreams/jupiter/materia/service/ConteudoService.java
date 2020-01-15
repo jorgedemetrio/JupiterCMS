@@ -9,18 +9,18 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.logging.Level;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.br.alldreams.jupiter.base.BaseService;
 import com.br.alldreams.jupiter.base.exception.service.DadosInvalidosServiceException;
 import com.br.alldreams.jupiter.base.exception.service.ErroInternoServiceException;
 import com.br.alldreams.jupiter.base.exception.service.ItemNaoEncontradoServiceException;
-import com.br.alldreams.jupiter.materia.dto.MateriaDTO;
+import com.br.alldreams.jupiter.materia.dto.ConteudoDTO;
 import com.br.alldreams.jupiter.materia.repository.MateriaRepository;
-import com.br.alldreams.jupiter.materia.repository.model.Materia;
-import com.br.alldreams.jupiter.materia.service.convert.MateriaConvert;
+import com.br.alldreams.jupiter.materia.repository.model.Conteudo;
+import com.br.alldreams.jupiter.materia.service.convert.ConteudoConvert;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
 /**
@@ -29,13 +29,14 @@ import lombok.extern.java.Log;
  * @version 1.0
  */
 @Log
-@RequiredArgsConstructor
 @Service
-public class MateriaService extends BaseService {
+public class ConteudoService extends BaseService {
 
-	private final MateriaRepository repositorio;
+	@Autowired
+	private MateriaRepository repositorio;
 
-	private final MateriaConvert materiaConvert;
+	@Autowired
+	private ConteudoConvert materiaConvert;
 
 	public void apagar(final String codigo) throws DadosInvalidosServiceException, ErroInternoServiceException {
 		if (Objects.isNull(codigo) || codigo.isEmpty()) {
@@ -44,17 +45,17 @@ public class MateriaService extends BaseService {
 		repositorio.deleteById(codigo);
 	}
 
-	public List<MateriaDTO> buscar(final String titulo)
+	public List<ConteudoDTO> buscar(final String titulo)
 			throws DadosInvalidosServiceException, ErroInternoServiceException {
 		if (Objects.isNull(titulo) || titulo.isEmpty()) {
 			throw createException("campos-invalidos", DadosInvalidosServiceException.class, "titulo");
 		}
-		return materiaConvert.toMateriaDTO(repositorio.findByTitulo(titulo));
+		return materiaConvert.toConteudoDTO(repositorio.findByTitulo(titulo));
 	}
 
-	public void gravar(final MateriaDTO materia) throws DadosInvalidosServiceException, ErroInternoServiceException {
-		validar(materia);
-		repositorio.save(materiaConvert.toMateria(materia));
+	public void gravar(final ConteudoDTO conteudo) throws DadosInvalidosServiceException, ErroInternoServiceException {
+		validar(conteudo);
+		repositorio.save(materiaConvert.toConteudo(conteudo));
 	}
 
 	/**
@@ -66,12 +67,13 @@ public class MateriaService extends BaseService {
 	 * @throws ErroInternoServiceException       Erro interno.
 	 * @since 12 de jan de 2020 04:11:09
 	 */
-	public MateriaDTO pegar(final String codigo) throws ItemNaoEncontradoServiceException, ErroInternoServiceException {
-		Optional<Materia> materia;
+	public ConteudoDTO pegar(final String codigo)
+			throws ItemNaoEncontradoServiceException, ErroInternoServiceException {
+		Optional<Conteudo> conteudo;
 		try {
-			materia = repositorio.findById(codigo);
-			if (materia.isPresent()) {
-				return materiaConvert.toMateriaDTO(materia.get());
+			conteudo = repositorio.findById(codigo);
+			if (conteudo.isPresent()) {
+				return materiaConvert.toConteudoDTO(conteudo.get());
 			}
 		} catch (final Exception ex) {
 			log.log(Level.SEVERE, "Erro ao buscar matérias.", ex);
@@ -80,9 +82,9 @@ public class MateriaService extends BaseService {
 		throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Matéria");
 	}
 
-	public List<MateriaDTO> todos() throws ErroInternoServiceException {
-		final List<MateriaDTO> materiasDTO = new ArrayList<>();
-		repositorio.findAll().forEach(n -> materiasDTO.add(materiaConvert.toMateriaDTO(n)));
+	public List<ConteudoDTO> todos() throws ErroInternoServiceException {
+		final List<ConteudoDTO> materiasDTO = new ArrayList<>();
+		repositorio.findAll().forEach(n -> materiasDTO.add(materiaConvert.toConteudoDTO(n)));
 		return materiasDTO;
 	}
 

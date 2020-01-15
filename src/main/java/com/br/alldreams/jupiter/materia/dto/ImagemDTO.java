@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.br.alldreams.jupiter.materia.repository.model.TipoImagemEnum;
+
 import lombok.Data;
 
 /**
@@ -21,10 +23,12 @@ import lombok.Data;
 @Validated
 public class ImagemDTO implements Serializable {
 
+
+
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = -6911774040915872345L;
+	private static final long serialVersionUID = -7624960086020039245L;
 
 	@NotEmpty
     private String endereco;
@@ -33,5 +37,8 @@ public class ImagemDTO implements Serializable {
 
     @NotNull
     private Boolean destaque;
+
+	@NotNull
+	private TipoImagemEnum tipo;
 
 }
