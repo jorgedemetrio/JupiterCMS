@@ -6,17 +6,9 @@ package com.br.alldreams.jupiter.usuario.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.controle.dto.ControleInformacaoAlteravelDTO;
 
 import lombok.Data;
 
@@ -27,9 +19,7 @@ import lombok.Data;
  */
 @Data
 @Validated
-public class GrupoDTO extends ControleInformacaoAlteravel implements Serializable {
-
-
+public class GrupoDTO extends ControleInformacaoAlteravelDTO implements Serializable {
 
     private String nome;
     private List<GrupoDTO> filhas;
