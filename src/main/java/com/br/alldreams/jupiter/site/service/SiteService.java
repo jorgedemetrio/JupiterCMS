@@ -42,13 +42,13 @@ public class SiteService extends BaseService {
 			createException("campos-invalidos", DadosInvalidosServiceException.class,
 					"id (Requirido)");
 		}
-		Site site = repository.getOne(siteDTO.getId());
+		Site site = this.repository.getOne(siteDTO.getId());
 		if (Objects.isNull(site)) {
 			createException("nao-encontrado", DadosInvalidosServiceException.class, "Site");
 		}
-		site = convert.toSite(siteDTO, site);
+        site = this.convert.toEntity(siteDTO, site);
 		try {
-			repository.save(setDadosAlteracao(site));
+			this.repository.save(setDadosAlteracao(site));
 		} catch (final SemPermissaoServiceException | SiteNaoExisteServiceException e) {
 			log.log(Level.INFO, "Tentou gravar um site sem permissão", e);
 			throw e;
@@ -63,10 +63,10 @@ public class SiteService extends BaseService {
 
 
 
-		final Site site = repository.getOne(id);
+		final Site site = this.repository.getOne(id);
 
 		try {
-			repository.save(setDadosCricao(site));
+			this.repository.save(setDadosCricao(site));
 		} catch (final SemPermissaoServiceException | SiteNaoExisteServiceException e) {
 			log.log(Level.INFO, "Tentou gravar um site sem permissão", e);
 			throw e;
@@ -80,10 +80,10 @@ public class SiteService extends BaseService {
 			createException("campos-invalidos", DadosInvalidosServiceException.class,
 					"id (Deve estar tentando gravar um site que já existe)");
 		}
-		final Site site = convert.toSite(siteDTO);
+        final Site site = this.convert.toEntity(siteDTO);
 
 		try {
-			repository.save(setDadosCricao(site));
+			this.repository.save(setDadosCricao(site));
 		} catch (final SemPermissaoServiceException | SiteNaoExisteServiceException e) {
 			log.log(Level.INFO, "Tentou gravar um site sem permissão", e);
 			throw e;
