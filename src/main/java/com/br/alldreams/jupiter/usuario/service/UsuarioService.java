@@ -40,16 +40,17 @@ public class UsuarioService extends BaseService {
     public Page<UsuarioDTO> buscaPorNome(final String nome, final SiteDTO site, final Integer itensPorPagina, final Integer pagina, final String sentido, final String ordenacao) {
 
             final Page<Usuario> usuairosPaginados = this.repositorio
-                    .todos(site.getId(), getPageable(pagina, itensPorPagina, sentido, ordenacao))));
+                    .todos(site.getId(), getPageable(pagina, itensPorPagina, sentido, ordenacao));
 
             final List<UsuarioDTO> itens = this.convert.toDTO(usuairosPaginados.getContent());
 
             return getPagina(itens, usuairosPaginados);
 
     }
-    public Page<UsuarioDTO> getAll(final SiteDTO site, final Integer itensPorPagina, final Integer pagina, final String ordenacao) {
+
+    public Page<UsuarioDTO> getAll(final SiteDTO site, final Integer itensPorPagina, final Integer pagina, final fianl String sentido,  final String ordenacao) {
         final Page<Usuario> usuairosPaginados = this.repositorio
-                .todos(site.getId(), getPageable(pagina, itensPorPagina, sentido, ordenacao))));
+                .todos(site.getId(), getPageable(pagina, itensPorPagina, sentido, ordenacao));
 
         final List<UsuarioDTO> itens = this.convert.toDTO(usuairosPaginados.getContent());
 
