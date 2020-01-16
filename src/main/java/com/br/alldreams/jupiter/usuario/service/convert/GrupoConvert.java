@@ -18,19 +18,5 @@ import com.br.alldreams.jupiter.usuario.repository.model.Grupo;
 		Grupo.class })
 public interface GrupoConvert extends ConvertPadrao<GrupoDTO, Grupo> {
 
-//
-//	GrupoDTO toGrupo(Grupo grupo);
-//
-//	@InheritInverseConfiguration
-//	Grupo toGrupo(GrupoDTO grupo);
-//
-//	@Mapping(target = "id", ignore = true)
-//	@Mapping(target = "criador", ignore = true)
-//	@Mapping(target = "dataCriacao", ignore = true)
-//	@Mapping(target = "ipCriador", ignore = true)
-//	Grupo toGrupo(GrupoDTO grupo, @MappingTarget Grupo origem);
-//
-//	List<Grupo> toGrupos(List<GrupoDTO> grupo);
-//
-//	List<GrupoDTO> toGruposDTO(List<Grupo> grupo);
+
 }
