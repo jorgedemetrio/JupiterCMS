@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
 
 import lombok.Getter;
 import lombok.Setter;

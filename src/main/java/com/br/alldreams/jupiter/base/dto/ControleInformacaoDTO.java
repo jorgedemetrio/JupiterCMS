@@ -1,12 +1,10 @@
 /**
  *
  */
-package com.br.alldreams.jupiter.controle.dto;
+package com.br.alldreams.jupiter.base.dto;
 
 import java.util.Date;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -27,7 +25,7 @@ public abstract class ControleInformacaoDTO {
 
     private String id;
 
-    @NotNull
+
     private UsuarioDTO criador;
 
     @NotEmpty
@@ -39,8 +37,5 @@ public abstract class ControleInformacaoDTO {
     @NotNull
     private Date dataCriacao;
 
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_site", insertable = true, updatable = false, nullable = false)
-    private Site site;
+	private Site site;
 }

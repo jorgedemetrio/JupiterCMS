@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.dto.ControleInformacaoAlteravelDTO;
+import com.br.alldreams.jupiter.base.dto.ControleInformacaoAlteravelDTO;
 
 import lombok.Data;
 

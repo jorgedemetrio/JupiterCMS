@@ -3,9 +3,13 @@
  */
 package com.br.alldreams.jupiter.usuario.service.convert;
 
-import org.mapstruct.Mapper;
+import java.util.List;
 
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Conteudo;
+import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
+
 import com.br.alldreams.jupiter.usuario.dto.GrupoDTO;
 import com.br.alldreams.jupiter.usuario.repository.model.Grupo;
 
@@ -14,10 +18,23 @@ import com.br.alldreams.jupiter.usuario.repository.model.Grupo;
  * @version 1.0
  * @since 16 de jan de 2020 00:52:48
  */
-@Mapper(componentModel = "spring", implementationName = "GrupoConvertImpl", implementationPackage = "<PACKAGE_NAME>.impl", imports = { Conteudo.class })
+@Mapper(componentModel = "spring", implementationName = "GrupoConvertImpl", implementationPackage = "<PACKAGE_NAME>.impl", imports = {
+		Grupo.class })
 public interface GrupoConvert {
 
-    GrupoDTO toGrupo(final Grupo grupo);
 
-    Grupo toGrupo(final GrupoDTO grupo);
+	GrupoDTO toGrupo(Grupo grupo);
+
+	@InheritInverseConfiguration
+	Grupo toGrupo(GrupoDTO grupo);
+
+	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "criador", ignore = true)
+	@Mapping(target = "dataCriacao", ignore = true)
+	@Mapping(target = "ipCriador", ignore = true)
+	Grupo toGrupo(GrupoDTO grupo, @MappingTarget Grupo origem);
+
+	List<Grupo> toGrupos(List<GrupoDTO> grupo);
+
+	List<GrupoDTO> toGruposDTO(List<Grupo> grupo);
 }

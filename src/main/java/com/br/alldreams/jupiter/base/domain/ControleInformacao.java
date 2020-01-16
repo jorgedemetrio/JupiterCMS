@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.br.alldreams.jupiter.controle.repository.model;
+package com.br.alldreams.jupiter.base.domain;
 
 import java.util.Date;
 
@@ -36,9 +36,9 @@ public abstract class ControleInformacao {
 	@Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
 	private String id;
 
-	@NotNull
+
 	@ManyToOne
-	@JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = false)
+	@JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
 	private Usuario criador;
 
 	@NotEmpty
@@ -53,8 +53,8 @@ public abstract class ControleInformacao {
 	@Column(name = "created_date", insertable = true, updatable = false, nullable = false)
 	private Date dataCriacao;
 
-	@NotNull
+
 	@ManyToOne
-	@JoinColumn(name = "id_site", insertable = true, updatable = false, nullable = false)
+	@JoinColumn(name = "id_site", insertable = true, updatable = false, nullable = true)
 	private Site site;
 }

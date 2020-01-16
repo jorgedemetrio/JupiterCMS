@@ -1,11 +1,10 @@
 /**
  *
  */
-package com.br.alldreams.jupiter.controle.dto;
+package com.br.alldreams.jupiter.base.dto;
 
 import java.util.Date;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.br.alldreams.jupiter.site.dto.SiteDTO;
@@ -23,26 +22,15 @@ import lombok.Setter;
 @Setter
 public abstract class ControleInformacaoAlteravelDTO {
 
-    private String id;
+
 
     private UsuarioDTO alterador;
 
-    @NotNull
-    private UsuarioDTO criador;
+	private String id;
 
-    @NotEmpty
-    private String versao;
-
-    @NotEmpty
-    private String ipCriador;
-
-    @NotEmpty
-    private String ipAlterador;
+	private String ipAlterador;
 
     private Date dataAlteracao;
-
-    @NotNull
-    private Date dataCriacao;
 
     @NotNull
     private SiteDTO site;

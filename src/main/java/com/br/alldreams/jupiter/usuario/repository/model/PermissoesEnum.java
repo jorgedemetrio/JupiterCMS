@@ -9,6 +9,14 @@ package com.br.alldreams.jupiter.usuario.repository.model;
  * @since 15 de jan de 2020 15:12:55
  */
 public enum PermissoesEnum {
-    ACESSO_MATERIA,
-
+    ACESSO_CONTEUDO,
+    
+    
+    
+    
+    BUSCAR_GRUPO_SITE,
+    ACESSAR_GRUPO_SITE,
+    ALTERAR_GRUPO_SITE,
+    APAGAR_GRUPO_SITE;
 }
+

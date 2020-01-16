@@ -8,7 +8,8 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.dto.ControleInformacaoAlteravelDTO;
+import com.br.alldreams.jupiter.base.domain.StatusEnum;
+import com.br.alldreams.jupiter.base.dto.ControleInformacaoAlteravelDTO;
 
 import lombok.Data;
 
@@ -25,5 +26,7 @@ public class GrupoDTO extends ControleInformacaoAlteravelDTO implements Serializ
     private List<GrupoDTO> filhas;
 
     private GrupoDTO pai;
+
+	private StatusEnum status;
 
 }
