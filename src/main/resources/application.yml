@@ -1,3 +1,38 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    url: jdbc:mysql://${db.host}/${db.database}
+    username: ${db.user}
+    password: ${db.pass}
+  cache:
+    type: redis
+  redis:
+    host: ${redis.server}
+    port: ${redis.port}
+
+logging:
+  level: 
+    org:
+      hibernate: 
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        jdbc:
+          core:
+            JdbcTemplate: DEBUG
+            StatementCreatorUtils: TRACE
+
 dynamodb:
   region: us-east-1
 

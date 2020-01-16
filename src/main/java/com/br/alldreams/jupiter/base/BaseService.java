@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
@@ -40,6 +41,10 @@ public abstract class BaseService {
 
 	public BaseException createException(final String chave, final String parametros) {
 		return mensagem.createExcetion(chave, parametros);
+	}
+
+	public String getNewId() {
+		return UUID.randomUUID().toString();
 	}
 
 	public void validar(final Serializable entidade) throws DadosInvalidosServiceException {
