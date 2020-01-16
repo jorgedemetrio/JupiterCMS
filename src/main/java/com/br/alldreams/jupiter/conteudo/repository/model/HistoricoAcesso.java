@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.repository.model.ControleInformacao;
+import com.br.alldreams.jupiter.base.domain.ControleInformacao;
 
 import lombok.Data;
 

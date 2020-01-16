@@ -7,12 +7,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.StatusEnum;
 
 import lombok.Data;
 
@@ -37,7 +40,7 @@ public class Site extends ControleInformacaoAlteravel implements Serializable {
 	private String nome;
 
 	@NotEmpty
-	@Column(name = "dns", insertable = true, updatable = true, nullable = false, length = 200)
+	@Column(name = "dns", insertable = true, updatable = true, nullable = false, unique = true, length = 250)
 	private String dns;
 
     @Column(name = "google_analytics", insertable = true, updatable = true, nullable = true, length = 200)
@@ -66,5 +69,9 @@ public class Site extends ControleInformacaoAlteravel implements Serializable {
 
     @Column(name = "footers", insertable = true, updatable = true, nullable = true, length = 2000)
     private String rodape;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "status", insertable = true, updatable = true, nullable = true, length = 20)
+	private StatusEnum status;
 
 }

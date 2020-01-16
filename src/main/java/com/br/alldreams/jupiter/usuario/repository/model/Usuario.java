@@ -4,15 +4,19 @@
 package com.br.alldreams.jupiter.usuario.repository.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
 
 import lombok.Data;
 
@@ -54,6 +58,15 @@ public class Usuario extends ControleInformacaoAlteravel implements Serializable
 	private StatusUsuarioEnum status;
 
 
+	@JoinTable(name = "tb_user_permissions",
+			joinColumns = {
+					@JoinColumn(name = "id_user", insertable = true, nullable = false, unique = false, updatable = false) },
+			inverseJoinColumns = {
+					@JoinColumn(name = "permission", insertable = true, nullable = false, unique = false, updatable = false) },
+			uniqueConstraints = {
+					@UniqueConstraint(columnNames = { "id_user", "permission" }) }
+			)
+	private List<PermissoesEnum> permissoes;
 
 
 

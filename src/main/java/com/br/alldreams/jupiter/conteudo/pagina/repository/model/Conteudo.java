@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -68,6 +69,7 @@ public class Conteudo extends BaseConteudo implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "tb_content_terms", joinColumns = {
 			@JoinColumn(name = "id_content", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "id_term", nullable = false, insertable = false, updatable = false) })
+					@JoinColumn(name = "id_term", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
+							@UniqueConstraint(columnNames = { "id_content", "id_term" }) })
 	private List<Termo> termos;
 }

@@ -18,7 +18,7 @@ import lombok.extern.java.Log;
  */
 @Log
 @Service
-public class ServiceUsuario extends BaseService{
+public class UsuarioService extends BaseService{
 
     @Autowired
     private UsuarioRepository repositorio;
