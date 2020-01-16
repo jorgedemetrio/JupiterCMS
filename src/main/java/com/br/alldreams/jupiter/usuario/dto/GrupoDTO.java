@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.br.alldreams.jupiter.usuario.repository.model;
+package com.br.alldreams.jupiter.usuario.dto;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,24 +27,13 @@ import lombok.Data;
  */
 @Data
 @Validated
-@Entity
-@Table(name = "tb_group")
-public class Grupo extends ControleInformacaoAlteravel implements Serializable {
+public class GrupoDTO extends ControleInformacaoAlteravel implements Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = -4341520984241566583L;
 
-    @NotEmpty
-    @Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
+
     private String nome;
+    private List<GrupoDTO> filhas;
 
-    @OneToMany(mappedBy = "pai")
-    private List<Grupo> filhas;
-
-    @ManyToOne
-    @JoinColumn(name = "id_parent", insertable = true, updatable = true, nullable = true)
-    private Grupo pai;
+    private GrupoDTO pai;
 
 }

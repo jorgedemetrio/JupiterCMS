@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.controle.dto.BaseControleDTO;
+import com.br.alldreams.jupiter.controle.dto.ControleInformacaoAlteravelDTO;
 import com.br.alldreams.jupiter.usuario.repository.model.StatusUsuarioEnum;
 
 import lombok.Data;
@@ -21,7 +21,7 @@ import lombok.Data;
  */
 @Data
 @Validated
-public class UsuarioDTO extends BaseControleDTO implements Serializable {
+public class UsuarioDTO extends ControleInformacaoAlteravelDTO implements Serializable {
 
 
 	/**
