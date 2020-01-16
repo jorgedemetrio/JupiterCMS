@@ -64,13 +64,13 @@ public class GrupoService extends BaseService {
 		if (isNull(grupoDTO.getId())) {
 			createException("campos-invalidos", DadosInvalidosServiceException.class, "id (Requirido)");
 		}
-		Grupo grupo = repositorio.pegarPorId(grupoDTO.getId(), getSite().getId());
+		Grupo grupo = this.repositorio.pegarPorId(grupoDTO.getId(), getSite().getId());
 		if (isNull(grupo)) {
 			createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Grupo");
 		}
-		grupo = convert.toGrupo(grupoDTO, grupo);
+        grupo = this.convert.toEntity(grupoDTO, grupo);
 		try {
-			repositorio.save(setDadosAlteracao(grupo));
+			this.repositorio.save(setDadosAlteracao(grupo));
 		} catch (final SemPermissaoServiceException | SiteNaoExisteServiceException e) {
 			log.log(Level.INFO, "Tentou gravar um grupo sem permissão", e);
 			throw e;
@@ -105,14 +105,14 @@ public class GrupoService extends BaseService {
 			throw createException("campo-abrigatorio", DadosInvalidosServiceException.class, "Nome");
 		}
 		List<GrupoDTO> itens;
-		final Page<Grupo> grupos = repositorio.pegarPorNome(nome, getSite().getId(),
+		final Page<Grupo> grupos = this.repositorio.pegarPorNome(nome, getSite().getId(),
 				getPageable(pagina, itensPorPagina, sentido, ordem));
 
 		if (isNull(grupos)) {
 			itens = new ArrayList<>();
 		}
 		else {
-			itens = convert.toGruposDTO(grupos.getContent());
+            itens = this.convert.toDTO(grupos.getContent());
 		}
 		return getPagina(itens, grupos);
 	}
@@ -139,12 +139,12 @@ public class GrupoService extends BaseService {
         if (isNull(idGrupo) || idGrupo.isEmpty()) {
             throw createException("campo-abrigatorio", DadosInvalidosServiceException.class, "Código do grupo");
         }
-		final Grupo grupo = repositorio.pegarPorId(idGrupo, getSite().getId());
+		final Grupo grupo = this.repositorio.pegarPorId(idGrupo, getSite().getId());
         if (isNull(grupo)) {
 			throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Grupo");
         }
 		grupo.setStatus(StatusEnum.DELETADO);
-		repositorio.delete(setDadosCricao(grupo));
+		this.repositorio.delete(setDadosCricao(grupo));
     }
 
 
@@ -171,10 +171,10 @@ public class GrupoService extends BaseService {
 			createException("campos-invalidos", DadosInvalidosServiceException.class,
 					"id (Deve estar tentando gravar um grupo que já existe)");
 		}
-		final Grupo grupo = convert.toGrupo(grupoDTO);
+        final Grupo grupo = this.convert.toEntity(grupoDTO);
 		grupo.setStatus(StatusEnum.ATIVO);
 		try {
-			repositorio.save(setDadosCricao(grupo));
+			this.repositorio.save(setDadosCricao(grupo));
 		} catch (final SemPermissaoServiceException | SiteNaoExisteServiceException e) {
 			log.log(Level.INFO, "Tentou gravar um grupo sem permissão", e);
 			throw e;
@@ -198,12 +198,12 @@ public class GrupoService extends BaseService {
 		if (isNull(idGrupo) || idGrupo.isEmpty()) {
 			throw createException("campo-abrigatorio", DadosInvalidosServiceException.class, "Código do grupo");
 		}
-		final Grupo grupo = repositorio.pegarPorId(idGrupo, getSite().getId());
+		final Grupo grupo = this.repositorio.pegarPorId(idGrupo, getSite().getId());
 		if (isNull(grupo)) {
 			throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Grupo");
 		}
 
-		return convert.toGrupo(grupo);
+        return this.convert.toDTO(grupo);
 	}
 
 

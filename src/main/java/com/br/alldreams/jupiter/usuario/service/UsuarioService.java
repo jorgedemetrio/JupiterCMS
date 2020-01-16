@@ -3,11 +3,18 @@
  */
 package com.br.alldreams.jupiter.usuario.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.br.alldreams.jupiter.base.BaseService;
+import com.br.alldreams.jupiter.site.dto.SiteDTO;
+import com.br.alldreams.jupiter.usuario.dto.UsuarioDTO;
 import com.br.alldreams.jupiter.usuario.repository.UsuarioRepository;
+import com.br.alldreams.jupiter.usuario.repository.model.Usuario;
+import com.br.alldreams.jupiter.usuario.service.convert.UsuarioConvert;
 
 import lombok.extern.java.Log;
 
@@ -18,9 +25,32 @@ import lombok.extern.java.Log;
  */
 @Log
 @Service
-public class UsuarioService extends BaseService{
+public class UsuarioService extends BaseService {
 
     @Autowired
     private UsuarioRepository repositorio;
+
+    @Autowired
+    private UsuarioConvert convert;
+
+    public Page<UsuarioDTO> buscaPorNome(final String nome, final SiteDTO site, final Integer itensPorPagina, final Integer pagina, final String sentido,
+            final String ordenacao) {
+
+            final Page<Usuario> usuairosPaginados = this.repositorio
+                .buscarPorNome(site.getId(), nome, getPageable(pagina, itensPorPagina, sentido, ordenacao));
+
+            final List<UsuarioDTO> itens = this.convert.toDTO(usuairosPaginados.getContent());
+
+            return getPagina(itens, usuairosPaginados);
+
+        }
+
+    public Page<UsuarioDTO> todos(final SiteDTO site, final Integer itensPorPagina, final Integer pagina, final String sentido, final String ordenacao) {
+        final Page<Usuario> usuairosPaginados = this.repositorio.todos(site.getId(), getPageable(pagina, itensPorPagina, sentido, ordenacao));
+
+        final List<UsuarioDTO> itens = this.convert.toDTO(usuairosPaginados.getContent());
+
+        return getPagina(itens, usuairosPaginados);
+    }
 
 }

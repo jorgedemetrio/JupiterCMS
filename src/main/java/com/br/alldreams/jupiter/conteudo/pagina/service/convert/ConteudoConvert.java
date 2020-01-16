@@ -18,7 +18,7 @@ import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Conteudo;
  * @since 12 de jan de 2020 03:39:21
  * @version 1.0
  */
-@Mapper(componentModel = "spring", imports = { Conteudo.class })
+@Mapper(componentModel = "spring", implementationName = "ConteudoConvertImpl", implementationPackage = "<PACKAGE_NAME>.impl", imports = { Conteudo.class })
 public interface ConteudoConvert {
 
 
