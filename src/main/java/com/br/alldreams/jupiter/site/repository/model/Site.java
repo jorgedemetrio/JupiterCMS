@@ -67,4 +67,9 @@ public class Site extends ControleInformacaoAlteravel implements Serializable {
     @Column(name = "footers", insertable = true, updatable = true, nullable = true, length = 2000)
     private String rodape;
 
+    @Column(name = "colmuns", insertable = true, updatable = true, nullable = true, length = 2000)
+    private Short colunas;
+
+    @Column(name = "type", insertable = true, updatable = true, nullable = true, length = 2000)
+    private TipoCMSEnum tipo;
 }

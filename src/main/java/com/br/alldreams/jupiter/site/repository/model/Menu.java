@@ -57,4 +57,12 @@ public class Menu extends BaseConteudo implements Serializable {
     @Column(name = "parameters", insertable = true, updatable = true, nullable = true, unique = false, length = 200)
     private HashMap<String, String> parametros;
 
+    @NotNull
+    @Column(name = "startpage", insertable = true, updatable = true, nullable = false, unique = false)
+    private Boolean homepage;
+
+    @NotNull
+    @Column(name = "layout", insertable = true, updatable = true, nullable = false, unique = false, length = 50)
+    private String layout;
+
 }
