@@ -14,6 +14,6 @@ import com.br.alldreams.jupiter.usuario.repository.model.UsuarioHistoricoSenhas;
  * @since 15 de jan de 2020 15:05:21
  */
 @Repository
-public interface UsuarioHistoricoSenhasRepository extends JpaRepository<UsuarioHistoricoSenhas, String> {
+public interface UsuarioHistoricoSenhasRepository extends JpaRepository<UsuarioHistoricoSenhas, Long> {
 
 }

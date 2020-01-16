@@ -9,8 +9,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.br.alldreams.jupiter.base.dto.ControleInformacaoAlteravelDTO;
 import com.br.alldreams.jupiter.conteudo.repository.model.StatusConteudoEnum;
-import com.br.alldreams.jupiter.controle.dto.BaseControleDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,7 +22,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public abstract class BaseConteudoDTO extends BaseControleDTO {
+public abstract class BaseConteudoDTO extends ControleInformacaoAlteravelDTO {
 
 	private String id;
 

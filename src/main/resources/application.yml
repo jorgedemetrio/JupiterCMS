@@ -40,7 +40,8 @@ exceptions:
   classes:
     notfound: com.br.alldreams.jupiter.base.exception.service.ItemNaoEncontradoServiceException	
     dadosinvalidos: com.br.alldreams.jupiter.base.exception.service.DadosInvalidosServiceException
-
+    sempermissao: com.br.alldreams.jupiter.base.exception.service.SemPermissaoServiceException
+    sitenaoexiste: com.br.alldreams.jupiter.base.exception.service.SiteNaoExisteServiceException
 
 
 
@@ -55,3 +56,11 @@ mensagens:
       descricao: "Campos invalidos (%s)."
       codigo: "0002"
       classe: ${exceptions.classes.dadosinvalidos}
+    sem-permissao:
+      descricao: "Não possui permissão para acessar essa informação ou o usuário não está logado."
+      codigo: "0003"
+      classe: ${exceptions.classes.sempermissao}
+    site-nao-existe:
+      descricao: "O site que tentou acessar não exite ou não está mais disponivel."
+      codigo: "0004"
+      classe: ${exceptions.classes.sitenaoexiste}

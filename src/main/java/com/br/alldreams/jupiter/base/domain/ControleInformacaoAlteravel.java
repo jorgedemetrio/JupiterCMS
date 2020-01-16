@@ -1,7 +1,9 @@
 /**
  *
  */
-package com.br.alldreams.jupiter.controle.repository.model;
+package com.br.alldreams.jupiter.base.domain;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +11,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotEmpty;
 
 import com.br.alldreams.jupiter.usuario.repository.model.Usuario;
 
@@ -31,8 +32,12 @@ public abstract class ControleInformacaoAlteravel extends ControleInformacao {
 	@JoinColumn(name = "id_user_altered", insertable = true, updatable = true, nullable = true)
 	private Usuario alterador;
 
-	@NotEmpty
+
 	@Column(name = "ip_alterator", insertable = true, updatable = true, nullable = true, length = 20)
 	private String ipAlterador;
+
+
+	@Column(name = "updated_date", insertable = true, updatable = false, nullable = false)
+	private Date dataAlteracao;
 
 }

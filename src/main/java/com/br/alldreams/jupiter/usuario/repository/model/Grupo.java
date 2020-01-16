@@ -8,19 +8,30 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 
-import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
+import org.springframework.validation.annotation.Validated;
+
+import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.StatusEnum;
+
+import lombok.Data;
 
 /**
  * @author Jorge Demetrio
  * @version 1.0.0
  * @since 15 de jan de 2020 15:10:45
  */
+@Data
+@Validated
 @Entity
 @Table(name = "tb_group")
 public class Grupo extends ControleInformacaoAlteravel implements Serializable {
@@ -40,5 +51,22 @@ public class Grupo extends ControleInformacaoAlteravel implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_parent", insertable = true, updatable = true, nullable = true)
     private Grupo pai;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "status", insertable = true, updatable = true, nullable = true, length = 20)
+	private StatusEnum status;
+
+
+
+	@JoinTable(name="tb_group_permissions",
+			joinColumns = {
+					@JoinColumn(name = "id_group", insertable = true, nullable = false, unique = false, updatable = false) },
+			inverseJoinColumns = {
+					@JoinColumn(name = "permission", insertable = true, nullable = false, unique = false, updatable = false) },
+			uniqueConstraints = {
+					@UniqueConstraint(columnNames = { "id_group", "permission" }) }
+			)
+	private List<PermissoesEnum> permissoes;
+
 
 }
