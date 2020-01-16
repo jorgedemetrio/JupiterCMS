@@ -14,13 +14,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.validation.annotation.Validated;
+
 import com.br.alldreams.jupiter.controle.repository.model.ControleInformacaoAlteravel;
+
+import lombok.Data;
 
 /**
  * @author Jorge Demetrio
  * @version 1.0.0
  * @since 15 de jan de 2020 15:10:45
  */
+@Data
+@Validated
 @Entity
 @Table(name = "tb_group")
 public class Grupo extends ControleInformacaoAlteravel implements Serializable {
