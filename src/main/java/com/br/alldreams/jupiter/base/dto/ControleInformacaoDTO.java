@@ -8,7 +8,7 @@ import java.util.Date;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-import com.br.alldreams.jupiter.site.repository.model.Site;
+import com.br.alldreams.jupiter.site.repository.domain.Site;
 import com.br.alldreams.jupiter.usuario.dto.UsuarioDTO;
 
 import lombok.Getter;

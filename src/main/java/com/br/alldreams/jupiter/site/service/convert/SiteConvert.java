@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 import com.br.alldreams.jupiter.base.domain.ConvertPadrao;
 import com.br.alldreams.jupiter.site.dto.SiteDTO;
-import com.br.alldreams.jupiter.site.repository.model.Site;
+import com.br.alldreams.jupiter.site.repository.domain.Site;
 
 /**
  * @author Jorge Demetrio

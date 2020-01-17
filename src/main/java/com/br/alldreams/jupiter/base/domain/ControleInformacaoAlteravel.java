@@ -12,7 +12,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.br.alldreams.jupiter.usuario.repository.model.Usuario;
+import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 
 import lombok.Getter;
 import lombok.Setter;

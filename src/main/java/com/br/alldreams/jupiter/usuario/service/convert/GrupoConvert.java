@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 
 import com.br.alldreams.jupiter.base.domain.ConvertPadrao;
 import com.br.alldreams.jupiter.usuario.dto.GrupoDTO;
-import com.br.alldreams.jupiter.usuario.repository.model.Grupo;
+import com.br.alldreams.jupiter.usuario.repository.domain.Grupo;
 
 /**
  * @author Jess

@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.br.alldreams.jupiter.site.repository.model.Site;
+import com.br.alldreams.jupiter.site.repository.domain.Site;
 
 /**
  * @author Jorge Demetrio

@@ -18,7 +18,7 @@ import com.br.alldreams.jupiter.base.exception.service.ErroInternoServiceExcepti
 import com.br.alldreams.jupiter.base.exception.service.ItemNaoEncontradoServiceException;
 import com.br.alldreams.jupiter.conteudo.pagina.dto.ConteudoDTO;
 import com.br.alldreams.jupiter.conteudo.pagina.repository.ConteudoRepository;
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Conteudo;
+import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.Conteudo;
 import com.br.alldreams.jupiter.conteudo.pagina.service.convert.ConteudoConvert;
 
 import lombok.extern.java.Log;

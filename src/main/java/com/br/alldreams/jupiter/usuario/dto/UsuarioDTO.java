@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import org.springframework.validation.annotation.Validated;
 
 import com.br.alldreams.jupiter.base.dto.ControleInformacaoAlteravelDTO;
-import com.br.alldreams.jupiter.usuario.repository.model.StatusUsuarioEnum;
+import com.br.alldreams.jupiter.usuario.repository.domain.StatusUsuarioEnum;
 
 import lombok.Data;
 

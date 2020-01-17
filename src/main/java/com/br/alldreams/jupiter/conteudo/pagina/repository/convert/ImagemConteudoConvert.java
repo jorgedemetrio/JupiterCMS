@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Imagem;
+import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.Imagem;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -13,7 +13,7 @@ import com.br.alldreams.jupiter.base.BaseService;
 import com.br.alldreams.jupiter.site.dto.SiteDTO;
 import com.br.alldreams.jupiter.usuario.dto.UsuarioDTO;
 import com.br.alldreams.jupiter.usuario.repository.UsuarioRepository;
-import com.br.alldreams.jupiter.usuario.repository.model.Usuario;
+import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 import com.br.alldreams.jupiter.usuario.service.convert.UsuarioConvert;
 
 import lombok.extern.java.Log;

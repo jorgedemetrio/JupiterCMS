@@ -34,9 +34,9 @@ import com.br.alldreams.jupiter.base.exception.service.SemPermissaoServiceExcept
 import com.br.alldreams.jupiter.base.exception.service.SiteNaoExisteServiceException;
 import com.br.alldreams.jupiter.base.messagem.Messagem;
 import com.br.alldreams.jupiter.site.repository.SiteRepository;
-import com.br.alldreams.jupiter.site.repository.model.Site;
+import com.br.alldreams.jupiter.site.repository.domain.Site;
 import com.br.alldreams.jupiter.usuario.repository.UsuarioRepository;
-import com.br.alldreams.jupiter.usuario.repository.model.Usuario;
+import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 
 import lombok.Getter;
 

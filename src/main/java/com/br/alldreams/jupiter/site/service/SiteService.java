@@ -15,7 +15,7 @@ import com.br.alldreams.jupiter.base.exception.service.SemPermissaoServiceExcept
 import com.br.alldreams.jupiter.base.exception.service.SiteNaoExisteServiceException;
 import com.br.alldreams.jupiter.site.dto.SiteDTO;
 import com.br.alldreams.jupiter.site.repository.SiteRepository;
-import com.br.alldreams.jupiter.site.repository.model.Site;
+import com.br.alldreams.jupiter.site.repository.domain.Site;
 import com.br.alldreams.jupiter.site.service.convert.SiteConvert;
 
 import lombok.extern.java.Log;

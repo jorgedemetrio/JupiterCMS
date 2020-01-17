@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.TipoImagemEnum;
+import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.TipoImagemEnum;
 
 import lombok.Data;
 

@@ -6,7 +6,7 @@ package com.br.alldreams.jupiter.conteudo.pagina.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Categoria;
+import com.br.alldreams.jupiter.conteudo.categoria.repository.domain.Categoria;
 
 /**
  * @author Jess

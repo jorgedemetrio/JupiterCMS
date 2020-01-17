@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Conteudo;
+import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.Conteudo;
 
 
 /**

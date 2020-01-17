@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.br.alldreams.jupiter.usuario.repository.model.Grupo;
+import com.br.alldreams.jupiter.usuario.repository.domain.Grupo;
 
 /**
  * @author Jess

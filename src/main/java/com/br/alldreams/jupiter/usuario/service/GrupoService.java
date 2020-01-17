@@ -23,7 +23,7 @@ import com.br.alldreams.jupiter.base.exception.service.SemPermissaoServiceExcept
 import com.br.alldreams.jupiter.base.exception.service.SiteNaoExisteServiceException;
 import com.br.alldreams.jupiter.usuario.dto.GrupoDTO;
 import com.br.alldreams.jupiter.usuario.repository.GrupoRepository;
-import com.br.alldreams.jupiter.usuario.repository.model.Grupo;
+import com.br.alldreams.jupiter.usuario.repository.domain.Grupo;
 import com.br.alldreams.jupiter.usuario.service.convert.GrupoConvert;
 
 import lombok.extern.java.Log;
