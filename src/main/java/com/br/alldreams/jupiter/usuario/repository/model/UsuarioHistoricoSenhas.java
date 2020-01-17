@@ -39,7 +39,7 @@ public class UsuarioHistoricoSenhas implements Serializable {
     private static final long serialVersionUID = 4325251551325353767L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", insertable = false, updatable = false, nullable = true)
     private Long id;
 

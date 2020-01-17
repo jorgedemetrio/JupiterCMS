@@ -20,9 +20,12 @@ import com.br.alldreams.jupiter.usuario.repository.model.Grupo;
 @Repository
 public interface GrupoRepository extends JpaRepository<Grupo, String> {
 
-	@Query("SELECT g FROM Grupo as g JOIN s.site as s WHERE s.id = :site AND g.id :id AND g.status = 'ATIVO' ")
+	@Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'ATIVO' ")
 	Grupo pegarPorId(@Param("id") String id, @Param("site") String site);
 
-	@Query("SELECT g FROM Grupo as g JOIN s.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'ATIVO' ")
+	@Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'ATIVO' ")
 	Page<Grupo> pegarPorNome(@Param("nome") String nome, @Param("site") String site, Pageable paginacao);
+
+	@Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.status = 'ATIVO' ")
+	Page<Grupo> todos(@Param("site") String site, Pageable paginacao);
 }

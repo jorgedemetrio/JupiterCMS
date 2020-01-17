@@ -106,7 +106,7 @@ public class GrupoService extends BaseService {
 		}
 		List<GrupoDTO> itens;
 		final Page<Grupo> grupos = this.repositorio.pegarPorNome(nome, getSite().getId(),
-				getPageable(pagina, itensPorPagina, sentido, ordem));
+				getPageable(pagina, itensPorPagina, ordem, sentido));
 
 		if (isNull(grupos)) {
 			itens = new ArrayList<>();
@@ -116,8 +116,6 @@ public class GrupoService extends BaseService {
 		}
 		return getPagina(itens, grupos);
 	}
-
-
 
 
 	/**
@@ -133,23 +131,18 @@ public class GrupoService extends BaseService {
 	 *                                           grava a informação ou sua sessão.
 	 * @since 16 de jan de 2020 03:18:24
 	 */
-	public void deletar(final String idGrupo)
-			throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException, SiteNaoExisteServiceException,
-			SemPermissaoServiceException {
-        if (isNull(idGrupo) || idGrupo.isEmpty()) {
-            throw createException("campo-abrigatorio", DadosInvalidosServiceException.class, "Código do grupo");
-        }
+	public void deletar(final String idGrupo) throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException,
+			SiteNaoExisteServiceException, SemPermissaoServiceException {
+		if (isNull(idGrupo) || idGrupo.isEmpty()) {
+			throw createException("campo-abrigatorio", DadosInvalidosServiceException.class, "Código do grupo");
+		}
 		final Grupo grupo = this.repositorio.pegarPorId(idGrupo, getSite().getId());
-        if (isNull(grupo)) {
+		if (isNull(grupo)) {
 			throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Grupo");
-        }
+		}
 		grupo.setStatus(StatusEnum.DELETADO);
 		this.repositorio.delete(setDadosCricao(grupo));
-    }
-
-
-
-
+	}
 
 
 	/**
@@ -181,6 +174,11 @@ public class GrupoService extends BaseService {
 		}
 	}
 
+
+
+
+
+
 	/**
 	 * Pega um Grupo por ID.
 	 *
@@ -204,6 +202,43 @@ public class GrupoService extends BaseService {
 		}
 
         return this.convert.toDTO(grupo);
+	}
+
+	/**
+	 * Busca na base um usuário pelo sue nome.
+	 *
+	 *
+	 * @param pagina         Pafina que está acessando. Se não for definina assume a
+	 *                       padrão {@link BaseService#PAGINA_INICIAL} .
+	 * @param itensPorPagina Itens por página na consulta. Se não for definina
+	 *                       assume a padrão
+	 *                       {@link BaseService#PADRO_MAXIMO_ITENS_PAGINA} .
+	 * @param ordem          Campo que deve ser ordenado.
+	 * @param sentido        Sentido da ordenação, deve ser ASC ou DESC como no :
+	 *                       {@link Direction}.
+	 * @return Lista de {@link GrupoDTO} .
+	 * @throws DadosInvalidosServiceException    Caso envie o formulário de forma
+	 *                                           inválida.
+	 * @throws ItemNaoEncontradoServiceException Item que tentou atualizar não
+	 *                                           existe.
+	 * @throws SiteNaoExisteServiceException     Site não exite na base.
+	 * @since 16 de jan de 2020 03:14:53
+	 */
+	public Page<GrupoDTO> todos( final Integer pagina, final Integer itensPorPagina,
+			final String ordem, final String sentido)
+			throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException, SiteNaoExisteServiceException {
+
+		List<GrupoDTO> itens;
+		final Page<Grupo> grupos = this.repositorio.todos(getSite().getId(),
+				getPageable(pagina, itensPorPagina, ordem,sentido));
+
+		if (isNull(grupos)) {
+			itens = new ArrayList<>();
+		}
+		else {
+            itens = this.convert.toDTO(grupos.getContent());
+		}
+		return getPagina(itens, grupos);
 	}
 
 

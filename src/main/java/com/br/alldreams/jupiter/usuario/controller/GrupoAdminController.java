@@ -6,7 +6,6 @@ package com.br.alldreams.jupiter.usuario.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,9 +22,9 @@ import com.br.alldreams.jupiter.usuario.service.GrupoService;
  * @since 16 de jan de 2020 03:26:51
  * @version 1.0
  */
-@Controller("/grupo")
-@RequestMapping("/grupo")
-public class GrupoController extends BaseController {
+@RequestMapping("/admin/grupo")
+@Controller
+public class GrupoAdminController extends BaseController {
 
 	@Autowired
 	GrupoService service;
@@ -33,28 +32,12 @@ public class GrupoController extends BaseController {
 //	@Secured(value = "has(GRUPO_USUARIO_DELETAR)")
 	@DeleteMapping("/{id}")
 	public ModelAndView deletar(@RequestParam("id") final String id) {
-		final ModelAndView model = new ModelAndView("/site/grupo");
+		final ModelAndView model = new ModelAndView("/admin/grupo");
 		try {
 			service.deletar(id);
 		} catch (DadosInvalidosServiceException | ItemNaoEncontradoServiceException | SiteNaoExisteServiceException
 				| SemPermissaoServiceException e) {
-			return tratarException(e, "/");
-		}
-		return model;
-	}
-
-
-
-	@GetMapping
-	public ModelAndView home(@RequestParam(name = "pagina", defaultValue = "1", required = false) final Integer pagina,
-			@RequestParam(name = "itensPorPagina", defaultValue = "10", required = false) final Integer itensPorPagina,
-			@RequestParam(name = "ordem", defaultValue = "nome", required = false) final String ordem,
-			@RequestParam(name = "sentido", defaultValue = "ASC", required = false) final String sentido) {
-		final ModelAndView model = new ModelAndView("/site/grupo");
-		try {
-			service.todos(pagina, itensPorPagina, ordem, sentido);
-		} catch (DadosInvalidosServiceException | ItemNaoEncontradoServiceException | SiteNaoExisteServiceException e) {
-			return tratarException(e, "/site/grupo");
+			return tratarException(e, "/admin/grupo");
 		}
 		return model;
 	}

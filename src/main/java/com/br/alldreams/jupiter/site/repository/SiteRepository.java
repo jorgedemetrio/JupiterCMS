@@ -4,6 +4,7 @@
 package com.br.alldreams.jupiter.site.repository;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -26,5 +27,5 @@ public interface SiteRepository extends JpaRepository<Site, String> {
 	Site pegarAtivo(@Param("id") String id);
 
 	@Query("SELECT s FROM Site as s WHERE upper(s.nome) like  upper(trim(:nome + '%')) AND s.status = 'ATIVO' ")
-	Page<Site> pegarPorNome(@Param("nome") String nome);
+	Page<Site> pegarPorNome(@Param("nome") String nome, Pageable paginacao);
 }

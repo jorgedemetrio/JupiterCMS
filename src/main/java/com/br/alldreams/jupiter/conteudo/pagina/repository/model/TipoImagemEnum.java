@@ -9,5 +9,5 @@ package com.br.alldreams.jupiter.conteudo.pagina.repository.model;
  * @version 1.0
  */
 public enum TipoImagemEnum {
-	DESTAQUE, MATERIA, THUMB;
+	DESTAQUE, CONTEUDO, THUMB;
 }

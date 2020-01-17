@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.br.alldreams.jupiter.site.repository.model;
 
@@ -9,7 +9,7 @@ package com.br.alldreams.jupiter.site.repository.model;
  * @since 15 de jan de 2020 19:02:17
  */
 public enum TipoCMSEnum {
-    PORTAL,
+	PORTAL,
     INSTITUCIONAL,
     CATALOGO,
     ECOMMERCE;

@@ -22,15 +22,15 @@ import lombok.Data;
 @Data
 @Validated
 @Entity
-@Table(name = "tb_history_pass")
+@Table(name = "tb_history_access")
 public class HistoricoAcesso extends ControleInformacao {
 
     @NotEmpty
-    @Column(name = "id", insertable = true, updatable = false, nullable = false, length = 250)
+	@Column(name = "page", insertable = true, updatable = false, nullable = false, length = 250)
     private String pagina;
 
     @NotEmpty
-    @Column(name = "id", insertable = true, updatable = false, nullable = false, length = 2000)
+	@Column(name = "log", insertable = true, updatable = false, nullable = false, length = 2000)
     private String log;
 
 

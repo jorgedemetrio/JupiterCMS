@@ -17,7 +17,7 @@ import com.br.alldreams.jupiter.base.exception.service.DadosInvalidosServiceExce
 import com.br.alldreams.jupiter.base.exception.service.ErroInternoServiceException;
 import com.br.alldreams.jupiter.base.exception.service.ItemNaoEncontradoServiceException;
 import com.br.alldreams.jupiter.conteudo.pagina.dto.ConteudoDTO;
-import com.br.alldreams.jupiter.conteudo.pagina.repository.MateriaRepository;
+import com.br.alldreams.jupiter.conteudo.pagina.repository.ConteudoRepository;
 import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Conteudo;
 import com.br.alldreams.jupiter.conteudo.pagina.service.convert.ConteudoConvert;
 
@@ -33,10 +33,10 @@ import lombok.extern.java.Log;
 public class ConteudoService extends BaseService {
 
 	@Autowired
-	private MateriaRepository repositorio;
+	private ConteudoRepository repositorio;
 
 	@Autowired
-	private ConteudoConvert materiaConvert;
+	private ConteudoConvert conteudoConvert;
 
 	public void apagar(final String codigo) throws DadosInvalidosServiceException, ErroInternoServiceException {
 		if (Objects.isNull(codigo) || codigo.isEmpty()) {
@@ -50,19 +50,19 @@ public class ConteudoService extends BaseService {
 		if (Objects.isNull(titulo) || titulo.isEmpty()) {
 			throw createException("campos-invalidos", DadosInvalidosServiceException.class, "titulo");
 		}
-		return materiaConvert.toConteudoDTO(repositorio.findByTitulo(titulo));
+		return conteudoConvert.toConteudoDTO(repositorio.findByTitulo(titulo));
 	}
 
 	public void gravar(final ConteudoDTO conteudo) throws DadosInvalidosServiceException, ErroInternoServiceException {
 		validar(conteudo);
-		repositorio.save(materiaConvert.toConteudo(conteudo));
+		repositorio.save(conteudoConvert.toConteudo(conteudo));
 	}
 
 	/**
-	 * Com o código tenta localizar uma materia.
+	 * Com o código tenta localizar um conteuod.
 	 *
 	 * @param codigo Codigo de busca.
-	 * @return Retorna uma MateriaDTO.
+	 * @return Retorna uma ConteudoDTO.
 	 * @throws ItemNaoEncontradoServiceException Se não achar.
 	 * @throws ErroInternoServiceException       Erro interno.
 	 * @since 12 de jan de 2020 04:11:09
@@ -73,7 +73,7 @@ public class ConteudoService extends BaseService {
 		try {
 			conteudo = repositorio.findById(codigo);
 			if (conteudo.isPresent()) {
-				return materiaConvert.toConteudoDTO(conteudo.get());
+				return conteudoConvert.toConteudoDTO(conteudo.get());
 			}
 		} catch (final Exception ex) {
 			log.log(Level.SEVERE, "Erro ao buscar matérias.", ex);
@@ -83,9 +83,9 @@ public class ConteudoService extends BaseService {
 	}
 
 	public List<ConteudoDTO> todos() throws ErroInternoServiceException {
-		final List<ConteudoDTO> materiasDTO = new ArrayList<>();
-		repositorio.findAll().forEach(n -> materiasDTO.add(materiaConvert.toConteudoDTO(n)));
-		return materiasDTO;
+		final List<ConteudoDTO> conteudosDTO = new ArrayList<>();
+		repositorio.findAll().forEach(n -> conteudosDTO.add(conteudoConvert.toConteudoDTO(n)));
+		return conteudosDTO;
 	}
 
 }

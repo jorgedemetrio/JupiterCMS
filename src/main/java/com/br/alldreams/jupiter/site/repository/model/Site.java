@@ -73,7 +73,8 @@ public class Site extends ControleInformacaoAlteravel implements Serializable {
     @Column(name = "colmuns", insertable = true, updatable = true, nullable = true, length = 2000)
     private Short colunas;
 
-    @Column(name = "type", insertable = true, updatable = true, nullable = true, length = 2000)
+	@Enumerated(EnumType.STRING)
+	@Column(name = "type", insertable = true, updatable = true, nullable = true, length = 20)
     private TipoCMSEnum tipo;
 
 	@Enumerated(EnumType.STRING)

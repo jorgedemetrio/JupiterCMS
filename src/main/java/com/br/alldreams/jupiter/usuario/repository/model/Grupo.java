@@ -5,17 +5,16 @@ package com.br.alldreams.jupiter.usuario.repository.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.validation.annotation.Validated;
@@ -56,17 +55,8 @@ public class Grupo extends ControleInformacaoAlteravel implements Serializable {
 	@Column(name = "status", insertable = true, updatable = true, nullable = true, length = 20)
 	private StatusEnum status;
 
-
-
-	@JoinTable(name="tb_group_permissions",
-			joinColumns = {
-					@JoinColumn(name = "id_group", insertable = true, nullable = false, unique = false, updatable = false) },
-			inverseJoinColumns = {
-					@JoinColumn(name = "permission", insertable = true, nullable = false, unique = false, updatable = false) },
-			uniqueConstraints = {
-					@UniqueConstraint(columnNames = { "id_group", "permission" }) }
-			)
-	private List<PermissoesEnum> permissoes;
+	@OneToMany(mappedBy = "id.grupo")
+	private Set<GrupoPermissoes> permissoes;
 
 
 }
