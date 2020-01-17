@@ -17,7 +17,7 @@ import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Conteudo;
  * @version 1.0
  */
 @Repository
-public interface MateriaRepository extends CrudRepository<Conteudo, String> {
+public interface ConteudoRepository extends CrudRepository<Conteudo, String> {
 
     List<Conteudo> findByTitulo(final String titulo);
 }
