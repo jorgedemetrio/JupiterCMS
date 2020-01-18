@@ -8,8 +8,9 @@ import java.util.List;
 
 import org.springframework.validation.annotation.Validated;
 
-import com.br.alldreams.jupiter.conteudo.dto.BaseConteudoDTO;
-import com.br.alldreams.jupiter.termo.dto.TermoDTO;
+import com.br.alldreams.jupiter.conteudo.base.dto.BaseConteudoDTO;
+import com.br.alldreams.jupiter.conteudo.categoria.dto.CategoriaDTO;
+import com.br.alldreams.jupiter.conteudo.termo.dto.TermoDTO;
 
 import lombok.Data;
 

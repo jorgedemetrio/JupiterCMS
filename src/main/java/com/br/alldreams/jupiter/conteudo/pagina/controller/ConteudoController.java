@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.br.alldreams.jupiter.base.BaseController;
@@ -25,27 +26,28 @@ import lombok.extern.java.Log;
  * @version 1.0
  */
 @Log
-@Controller
+@Controller("/page")
+@RequestMapping("/page")
 public class ConteudoController extends BaseController {
 
 	@Autowired
 	private ConteudoService service;
 
 	@GetMapping("/")
-	public ModelAndView index() {
-		List<ConteudoDTO> materias = null;
+	public ModelAndView home() {
+		List<ConteudoDTO> conteudos = null;
 
-		final ModelAndView model = new ModelAndView("materia");
+		final ModelAndView model = new ModelAndView("/site/conteudo");
 
 		try {
-			materias = this.service.todos();
+			conteudos = this.service.todos();
 
 		} catch (final ErroInternoServiceException e) {
 			log.log(Level.SEVERE, "Erro ao carregar a lista", e);
-			materias = new ArrayList<>();
+			conteudos = new ArrayList<>();
 			model.setStatus(e.getStatus());
 		}
-		model.addObject("materias", materias);
+		model.addObject("conteudos", conteudos);
 		return model;
 	}
 

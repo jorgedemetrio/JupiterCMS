@@ -25,8 +25,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.br.alldreams.jupiter.base.domain.ControleInformacao;
 import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
@@ -36,9 +34,9 @@ import com.br.alldreams.jupiter.base.exception.service.SemPermissaoServiceExcept
 import com.br.alldreams.jupiter.base.exception.service.SiteNaoExisteServiceException;
 import com.br.alldreams.jupiter.base.messagem.Messagem;
 import com.br.alldreams.jupiter.site.repository.SiteRepository;
-import com.br.alldreams.jupiter.site.repository.model.Site;
+import com.br.alldreams.jupiter.site.repository.domain.Site;
 import com.br.alldreams.jupiter.usuario.repository.UsuarioRepository;
-import com.br.alldreams.jupiter.usuario.repository.model.Usuario;
+import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 
 import lombok.Getter;
 
@@ -100,7 +98,7 @@ public abstract class BaseService {
 		return new PageImpl<>(itens, origin.getPageable(), origin.getTotalElements());
 	}
 
-	@Cacheable
+	@Cacheable(condition = "#{${spring.profiles.active} != 'dev' && ${spring.profiles.active} != 'test' ")
 	public Site getSite() throws SiteNaoExisteServiceException {
 		final Site site = siteRepository.descobrirSiteAtivoPorURL(request.getServerName());
 		if (Objects.isNull(site)) {
@@ -109,10 +107,11 @@ public abstract class BaseService {
 		return site;
 	}
 
-	@Cacheable
+	@Cacheable(condition = "#{${spring.profiles.active} != 'dev' && ${spring.profiles.active} != 'test' ")
 	public Usuario getUsuarioLogado() throws SemPermissaoServiceException, SiteNaoExisteServiceException {
-		final Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		final Usuario usuario = usuarioRepository.buscarUsuario(getSite().getId(), authentication.getName());
+		// final Authentication authentication =
+		// SecurityContextHolder.getContext().getAuthentication();
+		final Usuario usuario = usuarioRepository.buscarUsuario(getSite().getId(), "");// authentication.getName());
 		if(Objects.isNull(usuario)) {
 			throw createException("sem-permissao", SemPermissaoServiceException.class);
 		}
@@ -124,6 +123,9 @@ public abstract class BaseService {
 		entity.setAlterador(getUsuarioLogado());
 		entity.setDataAlteracao(new Date());
 		entity.setIpAlterador(request.getRemoteAddr());
+		entity.setVersao(nonNull(entity.getVersao()) && !entity.getVersao().isEmpty()
+				? String.valueOf(Integer.parseInt(entity.getVersao()) + 1)
+				: "1");
 		return entity;
 	}
 
@@ -134,6 +136,7 @@ public abstract class BaseService {
 		entity.setDataCriacao(new Date());
 		entity.setIpCriador(request.getRemoteAddr());
 		entity.setSite(getSite());
+		entity.setVersao("1");
 		return entity;
 	}
 

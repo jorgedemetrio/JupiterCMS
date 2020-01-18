@@ -11,7 +11,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import com.br.alldreams.jupiter.conteudo.pagina.dto.ConteudoDTO;
-import com.br.alldreams.jupiter.conteudo.pagina.repository.model.Conteudo;
+import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.Conteudo;
 
 /**
  * @author Jorge Demetrio

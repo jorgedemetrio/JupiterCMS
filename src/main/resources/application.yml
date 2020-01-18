@@ -4,34 +4,21 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-    show-sql: true
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true
+        format_sql: false
   datasource:
-    url: jdbc:mysql://${db.host}/${db.database}
+    url: jdbc:mysql://${db.host}/${db.database}?useTimezone=true&serverTimezone=UTC
     username: ${db.user}
     password: ${db.pass}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    
   cache:
     type: redis
   redis:
     host: ${redis.server}
     port: ${redis.port}
-
-logging:
-  level: 
-    org:
-      hibernate: 
-        SQL: DEBUG
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE
-      springframework:
-        jdbc:
-          core:
-            JdbcTemplate: DEBUG
-            StatementCreatorUtils: TRACE
 
 dynamodb:
   region: us-east-1
@@ -42,6 +29,12 @@ exceptions:
     dadosinvalidos: com.br.alldreams.jupiter.base.exception.service.DadosInvalidosServiceException
     sempermissao: com.br.alldreams.jupiter.base.exception.service.SemPermissaoServiceException
     sitenaoexiste: com.br.alldreams.jupiter.base.exception.service.SiteNaoExisteServiceException
+
+management:
+  endpoint:
+    health:
+      show-details: never
+      show-components: never
 
 
 

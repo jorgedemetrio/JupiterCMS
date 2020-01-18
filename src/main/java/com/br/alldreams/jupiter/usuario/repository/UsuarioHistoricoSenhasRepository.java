@@ -6,7 +6,7 @@ package com.br.alldreams.jupiter.usuario.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.br.alldreams.jupiter.usuario.repository.model.UsuarioHistoricoSenhas;
+import com.br.alldreams.jupiter.usuario.repository.domain.UsuarioHistoricoSenhas;
 
 /**
  * @author Jorge Demetrio
