@@ -30,7 +30,7 @@ import lombok.Data;
 @Validated
 @Entity
 @Table(name = "tb_history_pass")
-public class UsuarioHistoricoSenhas implements Serializable {
+public class HistoricoSenhaUsuario implements Serializable {
 
 
     /**
