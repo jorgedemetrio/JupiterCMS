@@ -22,6 +22,7 @@ import com.br.alldreams.jupiter.usuario.repository.domain.Grupo;
 @Repository
 public interface GrupoRepository extends JpaRepository<Grupo, UUID> {
 
+    // HQL - SQL
 	@Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'ATIVO' ")
 	Grupo pegarPorId(@Param("id") UUID id, @Param("site") UUID site);
 

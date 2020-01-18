@@ -37,10 +37,10 @@ public abstract class BaseCommonsController { // extends AbstractController {
 			}
 		}
 		else {
+            model.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 			model.addObject("mensagem", ex.getMessage());
 		}
 		model.addObject("exception", ex);
-		model.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 		return model;
 	}
 }

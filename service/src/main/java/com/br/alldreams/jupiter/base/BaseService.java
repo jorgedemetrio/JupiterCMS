@@ -96,3 +96,4 @@ public abstract class BaseService extends BaseCommonsService {
 		return entity;
 	}
 }
+

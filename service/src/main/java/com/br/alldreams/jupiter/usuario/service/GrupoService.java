@@ -64,11 +64,11 @@ public class GrupoService extends BaseService {
 			ItemNaoEncontradoServiceException {
 		validar(grupoDTO);
 		if (isNull(grupoDTO.getId())) {
-			createException("campos-invalidos", DadosInvalidosServiceException.class, "id (Requirido)");
+            throw createException("campos-invalidos", DadosInvalidosServiceException.class, "id (Requirido)");
 		}
         Grupo grupo = this.repositorio.pegarPorId(grupoDTO.getId(), getSite().getId());
 		if (isNull(grupo)) {
-			createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Grupo");
+            throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Grupo");
 		}
         grupo = this.convert.toEntity(grupoDTO, grupo);
 		try {
@@ -80,26 +80,26 @@ public class GrupoService extends BaseService {
 	}
 
 	/**
-	 * Busca na base um usuário pelo sue nome.
-	 *
-	 *
-	 * @param nome           O campo nome é orbigatorio.
-	 * @param pagina         Pafina que está acessando. Se não for definina assume a
-	 *                       padrão {@link BaseCommonsService#PAGINA_INICIAL} .
-	 * @param itensPorPagina Itens por página na consulta. Se não for definina
-	 *                       assume a padrão
-	 *                       {@link BaseCommonsService#PADRO_MAXIMO_ITENS_PAGINA} .
-	 * @param ordem          Campo que deve ser ordenado.
-	 * @param sentido        Sentido da ordenação, deve ser ASC ou DESC como no :
-	 *                       {@link Direction}.
-	 * @return Lista de {@link GrupoDTO} .
-	 * @throws DadosInvalidosServiceException    Caso envie o formulário de forma
-	 *                                           inválida.
-	 * @throws ItemNaoEncontradoServiceException Item que tentou atualizar não
-	 *                                           existe.
-	 * @throws SiteNaoExisteServiceException     Site não exite na base.
-	 * @since 16 de jan de 2020 03:14:53
-	 */
+     * Busca na base um usuário pelo sue nome.
+     *
+     *
+     * @param nome           O campo nome é orbigatorio.
+     * @param pagina         Pagina que está acessando. Se não for definina assume a
+     *                       padrão {@link BaseCommonsService#PAGINA_INICIAL} .
+     * @param itensPorPagina Itens por página na consulta. Se não for definina
+     *                       assume a padrão
+     *                       {@link BaseCommonsService#PADRO_MAXIMO_ITENS_PAGINA} .
+     * @param ordem          Campo que deve ser ordenado.
+     * @param sentido        Sentido da ordenação, deve ser ASC ou DESC como no :
+     *                       {@link Direction}.
+     * @return Lista de {@link GrupoDTO} .
+     * @throws DadosInvalidosServiceException    Caso envie o formulário de forma
+     *                                           inválida.
+     * @throws ItemNaoEncontradoServiceException Item que tentou atualizar não
+     *                                           existe.
+     * @throws SiteNaoExisteServiceException     Site não exite na base.
+     * @since 16 de jan de 2020 03:14:53
+     */
 	public Page<GrupoDTO> buscaPorNome(final String nome, final Integer pagina, final Integer itensPorPagina,
 			final String ordem, final String sentido)
 			throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException, SiteNaoExisteServiceException {
@@ -163,7 +163,7 @@ public class GrupoService extends BaseService {
 			throws DadosInvalidosServiceException, SemPermissaoServiceException, SiteNaoExisteServiceException {
 		validar(grupoDTO);
 		if (nonNull(grupoDTO.getId())) {
-			createException("campos-invalidos", DadosInvalidosServiceException.class,
+            throw createException("campos-invalidos", DadosInvalidosServiceException.class,
 					"id (Deve estar tentando gravar um grupo que já existe)");
 		}
         final Grupo grupo = this.convert.toEntity(grupoDTO);
