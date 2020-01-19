@@ -25,7 +25,7 @@ import lombok.Data;
  * @version 1.0
  */
 @Entity
-@Table(name = "tb_email_pessoa")
+@Table(name = "tb_email_person")
 @Data
 @Validated
 public class EmailPessoa extends ControleInformacaoAlteravel {

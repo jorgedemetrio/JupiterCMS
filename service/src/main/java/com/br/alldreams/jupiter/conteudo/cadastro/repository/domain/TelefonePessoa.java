@@ -5,8 +5,6 @@ package com.br.alldreams.jupiter.conteudo.cadastro.repository.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -26,7 +24,7 @@ import lombok.Data;
  * @version 1.0
  */
 @Entity
-@Table(name = "tb_telefone_pessoa")
+@Table(name = "tb_phone_person")
 @Data
 @Validated
 public class TelefonePessoa extends ControleInformacaoAlteravel {
@@ -42,7 +40,7 @@ public class TelefonePessoa extends ControleInformacaoAlteravel {
     private String nome;
 
     @Size(max = 4)
-    @Column(name = "nome", insertable = true, updatable = true, nullable = true, length = 4)
+    @Column(name = "ddd", insertable = true, updatable = true, nullable = true, length = 4)
     private String ddd;
 
     @NotEmpty
@@ -55,8 +53,7 @@ public class TelefonePessoa extends ControleInformacaoAlteravel {
     private Boolean principal;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type", insertable = true, updatable = true, nullable = false)
+    @Column(name = "type", insertable = true, updatable = true, nullable = false, length = 1)
     private TipoTelefoneEnum tipo;
 
     @NotNull

@@ -16,7 +16,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.br.alldreams.jupiter.base.BaseCommonsService;
 import com.br.alldreams.jupiter.base.BaseService;
 import com.br.alldreams.jupiter.base.domain.StatusEnum;
 import com.br.alldreams.jupiter.base.exception.service.DadosInvalidosServiceException;
@@ -85,10 +84,10 @@ public class GrupoService extends BaseService {
      *
      * @param nome           O campo nome é orbigatorio.
      * @param pagina         Pagina que está acessando. Se não for definina assume a
-     *                       padrão {@link BaseCommonsService#PAGINA_INICIAL} .
+     *                       padrão {@link BaseService#PAGINA_INICIAL} .
      * @param itensPorPagina Itens por página na consulta. Se não for definina
      *                       assume a padrão
-     *                       {@link BaseCommonsService#PADRO_MAXIMO_ITENS_PAGINA} .
+     *                       {@link BaseService#PADRO_MAXIMO_ITENS_PAGINA} .
      * @param ordem          Campo que deve ser ordenado.
      * @param sentido        Sentido da ordenação, deve ser ASC ou DESC como no :
      *                       {@link Direction}.
@@ -207,25 +206,25 @@ public class GrupoService extends BaseService {
 	}
 
 	/**
-	 * Busca na base um usuário pelo sue nome.
-	 *
-	 *
-	 * @param pagina         Pafina que está acessando. Se não for definina assume a
-	 *                       padrão {@link BaseCommonsService#PAGINA_INICIAL} .
-	 * @param itensPorPagina Itens por página na consulta. Se não for definina
-	 *                       assume a padrão
-	 *                       {@link BaseCommonsService#PADRO_MAXIMO_ITENS_PAGINA} .
-	 * @param ordem          Campo que deve ser ordenado.
-	 * @param sentido        Sentido da ordenação, deve ser ASC ou DESC como no :
-	 *                       {@link Direction}.
-	 * @return Lista de {@link GrupoDTO} .
-	 * @throws DadosInvalidosServiceException    Caso envie o formulário de forma
-	 *                                           inválida.
-	 * @throws ItemNaoEncontradoServiceException Item que tentou atualizar não
-	 *                                           existe.
-	 * @throws SiteNaoExisteServiceException     Site não exite na base.
-	 * @since 16 de jan de 2020 03:14:53
-	 */
+     * Busca na base um usuário pelo sue nome.
+     *
+     *
+     * @param pagina         Pafina que está acessando. Se não for definina assume a
+     *                       padrão {@link BaseService#PAGINA_INICIAL} .
+     * @param itensPorPagina Itens por página na consulta. Se não for definina
+     *                       assume a padrão
+     *                       {@link BaseService#PADRO_MAXIMO_ITENS_PAGINA} .
+     * @param ordem          Campo que deve ser ordenado.
+     * @param sentido        Sentido da ordenação, deve ser ASC ou DESC como no :
+     *                       {@link Direction}.
+     * @return Lista de {@link GrupoDTO} .
+     * @throws DadosInvalidosServiceException    Caso envie o formulário de forma
+     *                                           inválida.
+     * @throws ItemNaoEncontradoServiceException Item que tentou atualizar não
+     *                                           existe.
+     * @throws SiteNaoExisteServiceException     Site não exite na base.
+     * @since 16 de jan de 2020 03:14:53
+     */
 	public Page<GrupoDTO> todos( final Integer pagina, final Integer itensPorPagina,
 			final String ordem, final String sentido)
 			throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException, SiteNaoExisteServiceException {

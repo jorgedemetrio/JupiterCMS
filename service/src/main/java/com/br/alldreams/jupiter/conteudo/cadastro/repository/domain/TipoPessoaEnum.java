@@ -10,5 +10,29 @@ package com.br.alldreams.jupiter.conteudo.cadastro.repository.domain;
  */
 public enum TipoPessoaEnum {
 
-    FISICA, JURIDICA;
+    FISICA("F"), JURIDICA("J");
+
+    public static TipoPessoaEnum fromString(final String valor) {
+        switch (valor) {
+        case "FISICA":
+        case "F":
+            return FISICA;
+        case "J":
+        case "JURIDICA":
+            return JURIDICA;
+
+        }
+
+        throw new RuntimeException("Enumerate não encontrado");
+    }
+
+    private final String status;
+
+    private TipoPessoaEnum(final String valor) {
+        this.status = valor;
+    }
+
+    public String getDBStatus() {
+        return status;
+    }
 }

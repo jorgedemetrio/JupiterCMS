@@ -7,8 +7,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -33,8 +31,7 @@ public class Estado implements Serializable {
     private static final long serialVersionUID = -4497933969556380810L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "uf", insertable = false, updatable = false, nullable = true, length = 3)
+    @Column(name = "uf", insertable = true, updatable = false, nullable = true, length = 3)
     private String uf;
 
     @Column(name = "name", insertable = false, updatable = false, nullable = true, length = 200)

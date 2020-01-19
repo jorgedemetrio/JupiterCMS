@@ -88,6 +88,7 @@ public abstract class BaseService extends BaseCommonsService {
 	public <T extends BaseConteudo> T setDadosCricao(final T entity)
 			throws SemPermissaoServiceException, SiteNaoExisteServiceException {
 		entity.setId(UUID.randomUUID());
+
 		entity.setCriador(getUsuarioLogado());
 		entity.setDataCriacao(new Date());
 		entity.setIpCriador(request.getRemoteAddr());

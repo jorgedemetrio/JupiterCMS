@@ -20,13 +20,13 @@ import com.br.alldreams.jupiter.conteudo.banner.repository.domain.Banner;
  */
 public interface BannerRepository extends JpaRepository<Banner, UUID> {
 
-    @Query("SELECT g FROM Banner as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Banner as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'A' ")
     Banner pegarPorId(@Param("id") UUID id, @Param("site") UUID site);
 
-    @Query("SELECT g FROM Banner as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'ATIVO' ")
-    Page<Banner> pegarPorNome(@Param("nome") String nome, @Param("site") UUID site, Pageable paginacao);
+    @Query("SELECT g FROM Banner as g JOIN g.site as s WHERE s.id = :site AND upper(g.titulo) = upper(trim(:titulo + '%'))  AND g.status = 'A' ")
+    Page<Banner> pegarPorTitulo(@Param("titulo") String titulo, @Param("site") UUID site, Pageable paginacao);
 
-    @Query("SELECT g FROM Banner as g JOIN g.site as s WHERE s.id = :site AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Banner as g JOIN g.site as s WHERE s.id = :site AND g.status = 'A' ")
     Page<Banner> todos(@Param("site") UUID site, Pageable paginacao);
 
 }

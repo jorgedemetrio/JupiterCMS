@@ -22,13 +22,13 @@ import com.br.alldreams.jupiter.conteudo.termo.repository.domain.Termo;
 @Repository
 public interface TermoRepository extends JpaRepository<Termo, UUID> {
 
-    @Query("SELECT g FROM Termo as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Termo as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'A' ")
     Termo pegarPorId(@Param("id") UUID id, @Param("site") UUID site);
 
-    @Query("SELECT g FROM Termo as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Termo as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'A' ")
     Page<Termo> pegarPorNome(@Param("nome") String nome, @Param("site") UUID site, Pageable paginacao);
 
-    @Query("SELECT g FROM Termo as g JOIN g.site as s WHERE s.id = :site AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Termo as g JOIN g.site as s WHERE s.id = :site AND g.status = 'A' ")
     Page<Termo> todos(@Param("site") UUID site, Pageable paginacao);
 
 }

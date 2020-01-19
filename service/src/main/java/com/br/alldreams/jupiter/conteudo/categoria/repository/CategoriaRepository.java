@@ -22,13 +22,14 @@ import com.br.alldreams.jupiter.conteudo.categoria.repository.domain.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, UUID> {
 
-    @Query("SELECT g FROM Categoria as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Categoria as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'A' ")
     Categoria pegarPorId(@Param("id") UUID id, @Param("site") UUID site);
 
-    @Query("SELECT g FROM Categoria as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Categoria as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'A' ")
     Page<Categoria> pegarPorNome(@Param("nome") String nome, @Param("site") UUID site, Pageable paginacao);
 
-    @Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.status = 'A' ")
     Page<Categoria> todos(@Param("site") UUID site, Pageable paginacao);
+
 
 }

@@ -65,7 +65,7 @@ public class EnderecoPessoa extends ControleInformacaoAlteravel {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "id", insertable = true, updatable = true, nullable = false)
+    @JoinColumn(name = "id_city", insertable = true, updatable = true, nullable = false)
     private Cidade cidade;
 
     @NotNull

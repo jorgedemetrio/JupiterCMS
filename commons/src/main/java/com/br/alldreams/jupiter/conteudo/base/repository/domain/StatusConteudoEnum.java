@@ -12,16 +12,42 @@ public enum StatusConteudoEnum {
 	/**
 	 * Cotnteúdo deletado
 	 */
-	DELETADO,
+    DELETADO("D"),
 
 	/**
 	 * Conteduo publicado
 	 */
-	PUBLICADO,
+    PUBLICADO("P"),
 
 	/**
 	 * Não publicado
 	 */
-	NAO_PUBLICADO;
+    NAO_PUBLICADO("N");
+
+    public static StatusConteudoEnum fromString(final String valor) {
+        switch (valor) {
+        case "DELETADO":
+        case "D":
+            return DELETADO;
+        case "P":
+        case "PUBLICADO":
+            return PUBLICADO;
+        case "N":
+        case "NAO_PUBLICADO":
+            return NAO_PUBLICADO;
+        }
+
+        throw new RuntimeException("Enumerate não encontrado");
+    }
+
+    private final String status;
+
+    private StatusConteudoEnum(final String valor) {
+        this.status = valor;
+    }
+
+    public String getDBStatus() {
+        return status;
+    }
 
 }

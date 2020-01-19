@@ -21,7 +21,7 @@ import lombok.Data;
  */
 @Data
 @Validated
-public class ConteudoDTO extends BaseConteudoDTO implements Serializable {
+public class PaginaDTO extends BaseConteudoDTO implements Serializable {
 
 	/**
 	 *

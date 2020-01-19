@@ -9,8 +9,6 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -51,8 +49,7 @@ public class Grupo extends ControleInformacaoAlteravel implements Serializable {
     @JoinColumn(name = "id_parent", insertable = true, updatable = true, nullable = true)
     private Grupo pai;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "status", insertable = true, updatable = true, nullable = true, length = 20)
+    @Column(name = "status", insertable = true, updatable = true, nullable = true, length = 1)
 	private StatusEnum status;
 
 	@OneToMany(mappedBy = "id.grupo")

@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
@@ -50,9 +51,8 @@ public class Categoria extends BaseConteudo implements Serializable {
 	@JoinColumn(name = "id_parent", insertable = true, updatable = true, nullable = true)
 	private Categoria pai;
 
-    @NotEmpty
-    @Size(min = 1, max = 20)
+    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "type", insertable = true, updatable = true, nullable = false, length = 20)
-    private TipoCategoria tipo;
+    @Column(name = "type", insertable = true, updatable = true, nullable = false, length = 1)
+    private TipoCategoriaEnum tipo;
 }

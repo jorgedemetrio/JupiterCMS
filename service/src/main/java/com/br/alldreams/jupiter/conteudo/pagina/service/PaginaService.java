@@ -3,10 +3,11 @@
  */
 package com.br.alldreams.jupiter.conteudo.pagina.service;
 
+import static java.util.Objects.isNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Level;
 
@@ -19,10 +20,10 @@ import com.br.alldreams.jupiter.base.exception.service.DadosInvalidosServiceExce
 import com.br.alldreams.jupiter.base.exception.service.ErroInternoServiceException;
 import com.br.alldreams.jupiter.base.exception.service.ItemNaoEncontradoServiceException;
 import com.br.alldreams.jupiter.base.exception.service.SiteNaoExisteServiceException;
-import com.br.alldreams.jupiter.conteudo.pagina.dto.ConteudoDTO;
-import com.br.alldreams.jupiter.conteudo.pagina.repository.ConteudoRepository;
-import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.Conteudo;
-import com.br.alldreams.jupiter.conteudo.pagina.service.convert.ConteudoConvert;
+import com.br.alldreams.jupiter.conteudo.pagina.dto.PaginaDTO;
+import com.br.alldreams.jupiter.conteudo.pagina.repository.PaginaRepository;
+import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.Pagina;
+import com.br.alldreams.jupiter.conteudo.pagina.service.convert.PaginaConvert;
 
 import lombok.extern.java.Log;
 
@@ -33,13 +34,13 @@ import lombok.extern.java.Log;
  */
 @Log
 @Service
-public class ConteudoService extends BaseService {
+public class PaginaService extends BaseService {
 
 	@Autowired
-	private ConteudoRepository repositorio;
+	private PaginaRepository repositorio;
 
 	@Autowired
-	private ConteudoConvert conteudoConvert;
+	private PaginaConvert conteudoConvert;
 
 	public void apagar(final String codigo) throws DadosInvalidosServiceException, ErroInternoServiceException {
 		if (Objects.isNull(codigo) || codigo.isEmpty()) {
@@ -48,20 +49,20 @@ public class ConteudoService extends BaseService {
         repositorio.deleteById(UUID.fromString(codigo));
 	}
 
-    public Page<ConteudoDTO> buscar(final String titulo, final Integer pagina, final Integer itensPorPagina, final String ordem, final String sentido)
+    public Page<PaginaDTO> buscar(final String titulo, final Integer pagina, final Integer itensPorPagina, final String ordem, final String sentido)
             throws DadosInvalidosServiceException, ErroInternoServiceException, SiteNaoExisteServiceException {
 		if (Objects.isNull(titulo) || titulo.isEmpty()) {
 			throw createException("campos-invalidos", DadosInvalidosServiceException.class, "titulo");
 		}
 
-        final Page<Conteudo> paginaConteudo = repositorio.buscaPorTitulo(titulo, getSite().getId(), getPageable(pagina, itensPorPagina, ordem, sentido));
+        final Page<Pagina> paginaConteudo = repositorio.buscaPorTitulo(titulo, getSite().getId(), getPageable(pagina, itensPorPagina, ordem, sentido));
 
-        final List<ConteudoDTO> itens = conteudoConvert.toDTO(paginaConteudo.getContent());
+        final List<PaginaDTO> itens = conteudoConvert.toDTO(paginaConteudo.getContent());
 
         return getPagina(itens, paginaConteudo);
 	}
 
-	public void gravar(final ConteudoDTO conteudo) throws DadosInvalidosServiceException, ErroInternoServiceException {
+	public void gravar(final PaginaDTO conteudo) throws DadosInvalidosServiceException, ErroInternoServiceException {
 		validar(conteudo);
         repositorio.save(conteudoConvert.toEntity(conteudo));
 	}
@@ -75,13 +76,13 @@ public class ConteudoService extends BaseService {
 	 * @throws ErroInternoServiceException       Erro interno.
 	 * @since 12 de jan de 2020 04:11:09
 	 */
-	public ConteudoDTO pegar(final String codigo)
+	public PaginaDTO pegar(final String codigo)
 			throws ItemNaoEncontradoServiceException, ErroInternoServiceException {
-		Optional<Conteudo> conteudo;
+		Pagina conteudo;
 		try {
             conteudo = repositorio.pegarPorId(UUID.fromString(codigo), getSite().getId());
-			if (conteudo.isPresent()) {
-                return conteudoConvert.toDTO(conteudo.get());
+            if (isNull(conteudo)) {
+                return conteudoConvert.toDTO(conteudo);
 			}
 		} catch (final Exception ex) {
 			log.log(Level.SEVERE, "Erro ao buscar matérias.", ex);
@@ -90,8 +91,8 @@ public class ConteudoService extends BaseService {
 		throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Matéria");
 	}
 
-	public List<ConteudoDTO> todos() throws ErroInternoServiceException {
-		final List<ConteudoDTO> conteudosDTO = new ArrayList<>();
+	public List<PaginaDTO> todos() throws ErroInternoServiceException {
+		final List<PaginaDTO> conteudosDTO = new ArrayList<>();
         repositorio.findAll().forEach(n -> conteudosDTO.add(conteudoConvert.toDTO(n)));
 		return conteudosDTO;
 	}

@@ -39,8 +39,6 @@ public abstract class BaseConteudoDTO extends ControleInformacaoAlteravelDTO {
 	private String nomeArquivo;
 
 	@NotNull
-	@Enumerated(EnumType.STRING)
-
 	private StatusConteudoEnum status;
 
 }

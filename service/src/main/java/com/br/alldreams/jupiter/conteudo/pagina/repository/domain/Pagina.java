@@ -36,7 +36,7 @@ import lombok.Data;
 @Validated
 @Entity
 @Table(name = "tb_content")
-public class Conteudo extends BaseConteudo implements Serializable {
+public class Pagina extends BaseConteudo implements Serializable {
 
     /**
      *

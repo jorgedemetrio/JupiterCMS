@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -31,9 +32,9 @@ public class PkGrupoPermissoes implements Serializable {
 	 */
 	private static final long serialVersionUID = 2897375163672614625L;
 
-	@Enumerated
-	@Column(name = "permission", insertable = true, updatable = false, nullable = false, unique = false, length = 200)
-	private PermissoesEnum permissao;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "permission", insertable = true, updatable = false, nullable = false, unique = false, length = 200)
+    private PermissoesEnum permissao;
 
 	@ManyToOne
 	@JoinColumn(name = "id_group", insertable = true, updatable = false, nullable = false, unique = false)
