@@ -31,7 +31,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
      * @param paginacao Paginação.
      * @return Retorna um usuário paginado.
      */
-    @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE upper(u.nome) like upper(trim(:nome + '%')) AND s.id = :site AND u.status = 'ATIVO'")
+    @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE upper(u.nome) like upper(trim(:nome + '%')) AND s.id = :site AND u.status = 'A'")
 	Page<Usuario> buscarPorNome(@Param("site") UUID site, @Param("nome") String nome, Pageable paginacao);
 
     /**
@@ -43,7 +43,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
      * @return
      * @since 16 de jan de 2020 01:39:03
      */
-    @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE u.email = :email AND s.id = :site AND u.status = 'ATIVO'")
+    @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE u.email = :email AND s.id = :site AND u.status = 'A'")
 	Usuario buscarUsuario(@Param("site") UUID site, @Param("email") String email);
 
     /**
@@ -55,7 +55,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
 	 * @return
 	 * @since 16 de jan de 2020 01:39:03
 	 */
-	@Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE s.id = :site AND u.email = :email AND u.senha = :senha AND u.status = 'ATIVO'")
+	@Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE s.id = :site AND u.email = :email AND u.senha = :senha AND u.status = 'A'")
 	Usuario login(@Param("site") UUID site, @Param("email") String email, @Param("senha") String senha);
 
 	/**
@@ -67,7 +67,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
      * @param paginacao Paginação.
      * @return Retorna um usuário paginado.
      */
-    @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE s.id = :site AND u.status = 'ATIVO'")
+    @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE s.id = :site AND u.status = 'A'")
 	Page<Usuario> todos(@Param("site") UUID site, Pageable paginacao);
 
 }

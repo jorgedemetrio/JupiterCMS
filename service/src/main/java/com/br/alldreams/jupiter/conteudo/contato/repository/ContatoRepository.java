@@ -21,13 +21,13 @@ import com.br.alldreams.jupiter.usuario.repository.domain.Grupo;
  */
 public interface ContatoRepository extends JpaRepository<Contato, UUID> {
 
-    @Query("SELECT g FROM Contato as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Contato as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'A' ")
     Grupo pegarPorId(@Param("id") UUID id, @Param("site") UUID site);
 
-    @Query("SELECT g FROM Contato as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Contato as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'A' ")
     Page<Contato> pegarPorNome(@Param("nome") String nome, @Param("site") UUID site, Pageable paginacao);
 
-    @Query("SELECT g FROM Contato as g JOIN g.site as s WHERE s.id = :site AND g.status = 'ATIVO' ")
+    @Query("SELECT g FROM Contato as g JOIN g.site as s WHERE s.id = :site AND g.status = 'A' ")
     Page<Contato> todos(@Param("site") UUID site, Pageable paginacao);
 
 }

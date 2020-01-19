@@ -24,6 +24,8 @@ logging:
             JdbcTemplate: DEBUG
             StatementCreatorUtils: TRACE
 
+
+
 management:
   endpoint:
     health:

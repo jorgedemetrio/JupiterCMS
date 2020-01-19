@@ -3,8 +3,6 @@
  */
 package com.br.alldreams.jupiter.base;
 
-import java.util.logging.Level;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,9 +22,6 @@ public abstract class BaseCommonsController { // extends AbstractController {
 
 	public ModelAndView tratarException(final Exception ex,final String exceptionPath) {
 		final ModelAndView model = new ModelAndView(exceptionPath);
-		log.log(Level.INFO, ex.getMessage(), ex);
-
-
 		if (ex instanceof BaseException) {
 			model.addObject("mensagem", ((BaseException) ex).getDescricao());
 			model.addObject("codigo", ((BaseException) ex).getCodigo());
@@ -37,10 +32,10 @@ public abstract class BaseCommonsController { // extends AbstractController {
 			}
 		}
 		else {
+            model.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 			model.addObject("mensagem", ex.getMessage());
 		}
 		model.addObject("exception", ex);
-		model.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 		return model;
 	}
 }

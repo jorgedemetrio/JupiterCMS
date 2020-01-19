@@ -6,14 +6,15 @@ package com.br.alldreams.jupiter.conteudo.categoria.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.br.alldreams.jupiter.conteudo.base.dto.BaseConteudoDTO;
+import com.br.alldreams.jupiter.conteudo.categoria.repository.domain.TipoCategoriaEnum;
 
 import lombok.Data;
 
@@ -37,12 +38,16 @@ public class CategoriaDTO extends BaseConteudoDTO implements Serializable {
     @Size(min = 1, max = 200)
     private String nome;
 
-	@OneToMany(mappedBy = "pai")
+
+    @Valid
 	private List<CategoriaDTO> filhas;
 
-	@ManyToOne
+
+    @Valid
 	private CategoriaDTO pai;
 
 
+    @NotNull
+    private TipoCategoriaEnum tipo;
 
 }

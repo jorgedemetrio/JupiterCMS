@@ -5,8 +5,6 @@ package com.br.alldreams.jupiter.conteudo.base.repository.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotEmpty;
@@ -31,7 +29,12 @@ public abstract class BaseConteudo extends ControleInformacaoAlteravel {
 
 
 
-	@NotEmpty
+    /**
+     *
+     */
+    private static final long serialVersionUID = -1086879224945651000L;
+
+    @NotEmpty
 	@Size(min = 1, max = 250)
 	@Column(name = "meta_description", insertable = true, updatable = true, nullable = true, length = 250)
 	private String metaDescricao;
@@ -53,12 +56,10 @@ public abstract class BaseConteudo extends ControleInformacaoAlteravel {
 	private String nomeArquivo;
 
 	@NotNull
-	@Enumerated(EnumType.STRING)
-	@Column(name = "status", insertable = true, updatable = true, nullable = false, length = 250)
+    @Column(name = "status", insertable = true, updatable = true, nullable = false, length = 1)
 	private StatusConteudoEnum status;
 
 	@NotNull
-    @Enumerated(EnumType.STRING)
     @Column(name = "access", insertable = true, updatable = true, nullable = false, length = 20)
     private AcessoEnum acesso;
 

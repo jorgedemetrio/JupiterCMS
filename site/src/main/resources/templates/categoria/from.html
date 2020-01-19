@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html(titulo='Jupter 2')}">
+	<body>
+		<section layout:fragment="content">
+			<form action="#" th:action="@{/categoria}" th:object="${categoriaDTO}" method="post">
+				<input type="hidden" class="form-control input-sm" id="id" th:field="*{id}" />
+				<fieldset>
+					nome: <input type="text" class="form-control input-sm" id="nome" th:field="*{nome}" required="required" />
+				</fieldset>
+				<div class="form-group row">
+					<button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+					<a th:href="@{/}" class="btn btn-sm btn-default">Cancelar</a>
+				</div>
+			</form>
+		</section>
+	</body>
+</html>

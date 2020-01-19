@@ -13,8 +13,8 @@
 	<artifactId>jupiter-cms-service</artifactId>
 	<groupId>com.br.jupiter</groupId>
 	<version>0.0.1-SNAPSHOT</version>
-	
-	
+
+
 	<name>JupiterCMS Service</name>
 	<description>JupiterCMS Service</description>
 
@@ -128,7 +128,12 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
+
 
 </project>

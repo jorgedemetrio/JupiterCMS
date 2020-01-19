@@ -6,7 +6,7 @@ package com.br.alldreams.jupiter.conteudo.termo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.br.alldreams.jupiter.base.BaseCommonsService;
+import com.br.alldreams.jupiter.base.BaseService;
 import com.br.alldreams.jupiter.conteudo.termo.repository.TermoRepository;
 
 import lombok.extern.java.Log;
@@ -18,7 +18,7 @@ import lombok.extern.java.Log;
  */
 @Log
 @Service
-public class TermoService extends BaseCommonsService {
+public class TermoService extends BaseService {
 
     @Autowired
     private TermoRepository repositorio;

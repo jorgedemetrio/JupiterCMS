@@ -11,7 +11,7 @@ package com.br.alldreams.jupiter.config;
 //@Configuration
 //@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class AuthenticationConfig {// extends WebSecurityConfigurerAdapter {
-//	private static final String USUARIO_POR_LOGIN = "SELECT name, pass, status FROM tb_usuario WHERE email = ? AND status = 'ATIVO' ";
+//	private static final String USUARIO_POR_LOGIN = "SELECT name, pass, status FROM tb_usuario WHERE email = ? AND status = 'A' ";
 //
 //	private static final String PERMISSOES_POR_USUARIO = "SELECT u.login, p.nome FROM usuario_permissao up"
 //			+ " JOIN tb_usuario u ON u.id = up.usuarios_id" + " JOIN permissao p ON p.id = up.permissoes_id"

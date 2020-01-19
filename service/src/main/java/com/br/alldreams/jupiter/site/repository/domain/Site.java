@@ -5,8 +5,6 @@ package com.br.alldreams.jupiter.site.repository.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -71,12 +69,10 @@ public class Site extends ControleInformacaoAlteravel {
     @Column(name = "colmuns", insertable = true, updatable = true, nullable = true, length = 2000)
     private Short colunas;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "type", insertable = true, updatable = true, nullable = true, length = 20)
+    @Column(name = "type", insertable = true, updatable = true, nullable = true, length = 1)
     private TipoCMSEnum tipo;
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "status", insertable = true, updatable = true, nullable = true, length = 20)
+    @Column(name = "status", insertable = true, updatable = true, nullable = true, length = 1)
 	private StatusEnum status;
 
 

@@ -15,8 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.br.alldreams.jupiter.base.BaseCommonsController;
 import com.br.alldreams.jupiter.base.exception.service.ErroInternoServiceException;
-import com.br.alldreams.jupiter.conteudo.pagina.dto.ConteudoDTO;
-import com.br.alldreams.jupiter.conteudo.pagina.service.ConteudoService;
+import com.br.alldreams.jupiter.conteudo.pagina.dto.PaginaDTO;
+import com.br.alldreams.jupiter.conteudo.pagina.service.PaginaService;
 
 import lombok.extern.java.Log;
 
@@ -31,11 +31,11 @@ import lombok.extern.java.Log;
 public class ConteudoController extends BaseCommonsController {
 
 	@Autowired
-	private ConteudoService service;
+	private PaginaService service;
 
 	@GetMapping("/")
 	public ModelAndView home() {
-		List<ConteudoDTO> conteudos = null;
+		List<PaginaDTO> conteudos = null;
 
 		final ModelAndView model = new ModelAndView("/site/conteudo");
 

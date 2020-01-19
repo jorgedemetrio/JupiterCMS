@@ -9,19 +9,45 @@ package com.br.alldreams.jupiter.base.domain;
  * @version 1.0
  */
 public enum StatusEnum {
-	/**
-	 * Deletado
-	 */
-	DELETADO,
+    /**
+     * Deletado
+     */
+    DELETADO("D"),
 
-	/**
-	 * Ativo
-	 */
-	ATIVO,
+    /**
+     * Ativo
+     */
+    ATIVO("A"),
 
-	/**
-	 * INATIVO
-	 */
-	INATIVO;
+    /**
+     * INATIVO
+     */
+    INATIVO("A");
 
-}
+    public static StatusEnum fromString(final String valor) {
+        switch (valor) {
+        case "DELETADO":
+        case "D":
+            return DELETADO;
+        case "A":
+        case "ATIVO":
+            return ATIVO;
+        case "I":
+        case "INATIVO":
+            return INATIVO;
+        }
+
+        throw new RuntimeException("Enumerate não encontrado");
+    }
+
+    private final String status;
+
+    private StatusEnum(final String valor) {
+        this.status = valor;
+    }
+
+    public String getDBStatus() {
+        return status;
+        }
+
+    }
