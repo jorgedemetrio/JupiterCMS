@@ -5,10 +5,13 @@ package com.br.alldreams.jupiter.conteudo.pagina.repository.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -20,9 +23,10 @@ import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.br.alldreams.jupiter.conteudo.base.repository.convert.ImagemConteudoConvert;
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.BaseConteudo;
+import com.br.alldreams.jupiter.conteudo.base.repository.domain.Imagem;
 import com.br.alldreams.jupiter.conteudo.categoria.repository.domain.Categoria;
-import com.br.alldreams.jupiter.conteudo.pagina.repository.convert.ImagemConteudoConvert;
 import com.br.alldreams.jupiter.conteudo.termo.repository.domain.Termo;
 
 import lombok.Data;
@@ -71,6 +75,8 @@ public class Pagina extends BaseConteudo implements Serializable {
 	@JoinTable(name = "tb_content_terms", joinColumns = {
 			@JoinColumn(name = "id_content", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "id_term", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
-							@UniqueConstraint(columnNames = { "id_content", "id_term" }) })
-	private List<Termo> termos;
+							@UniqueConstraint(columnNames = { "id_content", "id_term" }) },
+                            foreignKey = @ForeignKey(value =  ConstraintMode.CONSTRAINT, name = "fk_term_content_cnt_id"),
+                            inverseForeignKey = @ForeignKey(value =  ConstraintMode.CONSTRAINT, name = "fk_content_term_id"))
+    private Set<Termo> termos;
 }

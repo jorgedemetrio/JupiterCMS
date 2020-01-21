@@ -45,4 +45,5 @@ public abstract class ControleInformacaoAlteravel extends ControleInformacao {
 	@Column(name = "updated_date", insertable = true, updatable = false, nullable = false)
 	private Date dataAlteracao;
 
+
 }
