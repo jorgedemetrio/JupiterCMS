@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.br.alldreams.jupiter.conteudo.pagina.repository.domain;
+package com.br.alldreams.jupiter.conteudo.base.repository.domain;
 
 import java.io.Serializable;
 
@@ -9,6 +9,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
+
+import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.TipoImagemEnum;
 
 import lombok.Data;
 

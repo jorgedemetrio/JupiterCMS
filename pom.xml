@@ -29,6 +29,8 @@
 		<downloadSources>true</downloadSources>
 		<downloadJavadocs>true</downloadJavadocs>
 		<selenium.version>3.141.59</selenium.version>
+		<pmdVersion>3.12.0</pmdVersion>
+		<findbugsVersion>3.0.6-SNAPSHOT</findbugsVersion>
 	</properties>
 
 	<modules>
