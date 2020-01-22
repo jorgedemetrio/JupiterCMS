@@ -24,21 +24,19 @@ import lombok.Setter;
 @Setter
 public abstract class BaseConteudoDTO extends ControleInformacaoAlteravelDTO {
 
+    @NotEmpty
+    @Size(min = 1, max = 250)
+    private String metaDescricao;
 
+    @NotEmpty
+    @Size(min = 1, max = 250)
+    private String palavrasChave;
 
-	@NotEmpty
-	@Size(min = 1, max = 250)
-	private String metaDescricao;
+    @NotEmpty
+    @Size(min = 1, max = 250)
+    private String nomeArquivo;
 
-	@NotEmpty
-	@Size(min = 1, max = 250)
-	private String palavrasChave;
-
-	@NotEmpty
-	@Size(min = 1, max = 250)
-	private String nomeArquivo;
-
-	@NotNull
-	private StatusConteudoEnum status;
+    @NotNull
+    private StatusConteudoEnum status;
 
 }

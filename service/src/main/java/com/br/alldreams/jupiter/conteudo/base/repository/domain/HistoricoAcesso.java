@@ -26,12 +26,11 @@ import lombok.Data;
 public class HistoricoAcesso extends ControleInformacao {
 
     @NotEmpty
-	@Column(name = "page", insertable = true, updatable = false, nullable = false, length = 250)
+    @Column(name = "page", insertable = true, updatable = false, nullable = false, length = 250)
     private String pagina;
 
     @NotEmpty
-	@Column(name = "log", insertable = true, updatable = false, nullable = false, length = 2000)
+    @Column(name = "log", insertable = true, updatable = false, nullable = false, length = 2000)
     private String log;
-
 
 }

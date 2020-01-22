@@ -50,10 +50,9 @@ public class Grupo extends ControleInformacaoAlteravel implements Serializable {
     private Grupo pai;
 
     @Column(name = "status", insertable = true, updatable = true, nullable = true, length = 1)
-	private StatusEnum status;
+    private StatusEnum status;
 
-	@OneToMany(mappedBy = "id.grupo")
-	private Set<GrupoPermissoes> permissoes;
-
+    @OneToMany(mappedBy = "id.grupo")
+    private Set<GrupoPermissoes> permissoes;
 
 }

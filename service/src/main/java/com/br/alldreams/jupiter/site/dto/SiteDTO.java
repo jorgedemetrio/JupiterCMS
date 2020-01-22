@@ -22,18 +22,15 @@ import lombok.Data;
 @Validated
 public class SiteDTO extends ControleInformacaoAlteravelDTO implements Serializable {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -6327137851755539010L;
 
+    @NotEmpty
+    private String nome;
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -6327137851755539010L;
-
-
-	@NotEmpty
-	private String nome;
-
-	@NotEmpty
-	private String dns;
+    @NotEmpty
+    private String dns;
 
 }

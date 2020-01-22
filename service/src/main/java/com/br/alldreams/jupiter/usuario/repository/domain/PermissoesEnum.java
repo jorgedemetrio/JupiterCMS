@@ -10,13 +10,6 @@ package com.br.alldreams.jupiter.usuario.repository.domain;
  */
 public enum PermissoesEnum {
     ACESSO_CONTEUDO,
-    
-    
-    
-    
-    BUSCAR_GRUPO_SITE,
-    ACESSAR_GRUPO_SITE,
-    ALTERAR_GRUPO_SITE,
-    APAGAR_GRUPO_SITE;
-}
 
+    BUSCAR_GRUPO_SITE, ACESSAR_GRUPO_SITE, ALTERAR_GRUPO_SITE, APAGAR_GRUPO_SITE;
+}

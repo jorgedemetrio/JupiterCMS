@@ -26,18 +26,18 @@ import lombok.Data;
 @Table(name = "tb_site")
 public class Site extends ControleInformacaoAlteravel {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -3769857701895659927L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -3769857701895659927L;
 
-	@NotEmpty
-	@Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
-	private String nome;
+    @NotEmpty
+    @Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
+    private String nome;
 
-	@NotEmpty
-	@Column(name = "dns", insertable = true, updatable = true, nullable = false, unique = true, length = 250)
-	private String dns;
+    @NotEmpty
+    @Column(name = "dns", insertable = true, updatable = true, nullable = false, unique = true, length = 250)
+    private String dns;
 
     @Column(name = "google_analytics", insertable = true, updatable = true, nullable = true, length = 200)
     private String googleAnalytics;
@@ -73,7 +73,6 @@ public class Site extends ControleInformacaoAlteravel {
     private TipoCMSEnum tipo;
 
     @Column(name = "status", insertable = true, updatable = true, nullable = true, length = 1)
-	private StatusEnum status;
-
+    private StatusEnum status;
 
 }

@@ -18,5 +18,4 @@ import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 @Mapper(componentModel = "spring", implementationName = "UsuarioConvertImpl", implementationPackage = "<PACKAGE_NAME>.impl", imports = { Pagina.class })
 public interface UsuarioConvert extends ConvertPadrao<UsuarioDTO, Usuario> {
 
-
 }

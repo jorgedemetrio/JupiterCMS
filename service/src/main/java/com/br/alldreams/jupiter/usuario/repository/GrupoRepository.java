@@ -23,12 +23,12 @@ import com.br.alldreams.jupiter.usuario.repository.domain.Grupo;
 public interface GrupoRepository extends JpaRepository<Grupo, UUID> {
 
     // HQL - SQL
-	@Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'A' ")
-	Grupo pegarPorId(@Param("id") UUID id, @Param("site") UUID site);
+    @Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'A' ")
+    Grupo pegarPorId(@Param("id") UUID id, @Param("site") UUID site);
 
-	@Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'A' ")
-	Page<Grupo> pegarPorNome(@Param("nome") String nome, @Param("site") UUID site, Pageable paginacao);
+    @Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND upper(g.nome) = upper(trim(:nome + '%'))  AND g.status = 'A' ")
+    Page<Grupo> pegarPorNome(@Param("nome") String nome, @Param("site") UUID site, Pageable paginacao);
 
-	@Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.status = 'A' ")
-	Page<Grupo> todos(@Param("site") UUID site, Pageable paginacao);
+    @Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.status = 'A' ")
+    Page<Grupo> todos(@Param("site") UUID site, Pageable paginacao);
 }

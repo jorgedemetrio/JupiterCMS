@@ -23,14 +23,12 @@ import lombok.Data;
 @Validated
 public class ImagemDTO implements Serializable {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = -7624960086020039245L;
 
-
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -7624960086020039245L;
-
-	@NotEmpty
+    @NotEmpty
     private String endereco;
 
     private String desricao;
@@ -38,7 +36,7 @@ public class ImagemDTO implements Serializable {
     @NotNull
     private Boolean destaque;
 
-	@NotNull
-	private TipoImagemEnum tipo;
+    @NotNull
+    private TipoImagemEnum tipo;
 
 }

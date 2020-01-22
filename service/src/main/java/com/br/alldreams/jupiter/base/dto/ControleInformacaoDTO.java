@@ -23,17 +23,13 @@ public abstract class ControleInformacaoDTO {
 
     private UUID id;
 
-
     private UsuarioDTO criador;
-
 
     private String versao;
 
-
     private String ipCriador;
-
 
     private Date dataCriacao;
 
-	private Site site;
+    private Site site;
 }

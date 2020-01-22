@@ -34,67 +34,61 @@ import lombok.Getter;
 @Getter
 public abstract class BaseService extends BaseCommonsService {
 
-	@Autowired
-	private UsuarioRepository usuarioRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
-	@Autowired
-	private SiteRepository siteRepository;
+    @Autowired
+    private SiteRepository siteRepository;
 
-	@Autowired
-	private HttpServletRequest request;
+    @Autowired
+    private HttpServletRequest request;
 
-	@Cacheable(condition = "#{${spring.profiles.active} != 'dev' && ${spring.profiles.active} != 'test' ")
-	public Site getSite() throws SiteNaoExisteServiceException {
-		final Site site = siteRepository.descobrirSiteAtivoPorURL(request.getServerName());
-		if (Objects.isNull(site)) {
-			throw createException("site-nao-existe", SiteNaoExisteServiceException.class);
-		}
-		return site;
-	}
+    @Cacheable(condition = "#{${spring.profiles.active} != 'dev' && ${spring.profiles.active} != 'test' ")
+    public Site getSite() throws SiteNaoExisteServiceException {
+        final Site site = siteRepository.descobrirSiteAtivoPorURL(request.getServerName());
+        if (Objects.isNull(site)) {
+            throw createException("site-nao-existe", SiteNaoExisteServiceException.class);
+        }
+        return site;
+    }
 
-	@Cacheable(condition = "#{${spring.profiles.active} != 'dev' && ${spring.profiles.active} != 'test' ")
-	public Usuario getUsuarioLogado() throws SemPermissaoServiceException, SiteNaoExisteServiceException {
-		// final Authentication authentication =
-		// SecurityContextHolder.getContext().getAuthentication();
-		final Usuario usuario = usuarioRepository.buscarUsuario(getSite().getId(), "");// authentication.getName());
-		if(Objects.isNull(usuario)) {
-			throw createException("sem-permissao", SemPermissaoServiceException.class);
-		}
-		return usuario;
-	}
+    @Cacheable(condition = "#{${spring.profiles.active} != 'dev' && ${spring.profiles.active} != 'test' ")
+    public Usuario getUsuarioLogado() throws SemPermissaoServiceException, SiteNaoExisteServiceException {
+        // final Authentication authentication =
+        // SecurityContextHolder.getContext().getAuthentication();
+        final Usuario usuario = usuarioRepository.buscarUsuario(getSite().getId(), "");// authentication.getName());
+        if (Objects.isNull(usuario)) {
+            throw createException("sem-permissao", SemPermissaoServiceException.class);
+        }
+        return usuario;
+    }
 
-	public <T extends ControleInformacaoAlteravel> T setDadosAlteracao(final T entity)
-			throws SemPermissaoServiceException, SiteNaoExisteServiceException {
-		entity.setAlterador(getUsuarioLogado());
-		entity.setDataAlteracao(new Date());
-		entity.setIpAlterador(request.getRemoteAddr());
-		entity.setVersao(nonNull(entity.getVersao()) && !entity.getVersao().isEmpty()
-				? String.valueOf(Integer.parseInt(entity.getVersao()) + 1)
-				: "1");
-		return entity;
-	}
+    public <T extends ControleInformacaoAlteravel> T setDadosAlteracao(final T entity) throws SemPermissaoServiceException, SiteNaoExisteServiceException {
+        entity.setAlterador(getUsuarioLogado());
+        entity.setDataAlteracao(new Date());
+        entity.setIpAlterador(request.getRemoteAddr());
+        entity.setVersao(nonNull(entity.getVersao()) && !entity.getVersao().isEmpty() ? String.valueOf(Integer.parseInt(entity.getVersao()) + 1) : "1");
+        return entity;
+    }
 
-	public <T extends ControleInformacao> T setDadosCricao(final T entity)
-			throws SemPermissaoServiceException, SiteNaoExisteServiceException {
-		entity.setId(null);
-		entity.setCriador(getUsuarioLogado());
-		entity.setDataCriacao(new Date());
-		entity.setIpCriador(request.getRemoteAddr());
-		entity.setSite(getSite());
-		entity.setVersao("1");
-		return entity;
-	}
+    public <T extends ControleInformacao> T setDadosCricao(final T entity) throws SemPermissaoServiceException, SiteNaoExisteServiceException {
+        entity.setId(null);
+        entity.setCriador(getUsuarioLogado());
+        entity.setDataCriacao(new Date());
+        entity.setIpCriador(request.getRemoteAddr());
+        entity.setSite(getSite());
+        entity.setVersao("1");
+        return entity;
+    }
 
-	public <T extends BaseConteudo> T setDadosCricao(final T entity)
-			throws SemPermissaoServiceException, SiteNaoExisteServiceException {
-		entity.setId(UUID.randomUUID());
+    public <T extends BaseConteudo> T setDadosCricao(final T entity) throws SemPermissaoServiceException, SiteNaoExisteServiceException {
+        entity.setId(UUID.randomUUID());
 
-		entity.setCriador(getUsuarioLogado());
-		entity.setDataCriacao(new Date());
-		entity.setIpCriador(request.getRemoteAddr());
-		entity.setSite(getSite());
-		entity.setVersao("1");
-		return entity;
-	}
+        entity.setCriador(getUsuarioLogado());
+        entity.setDataCriacao(new Date());
+        entity.setIpCriador(request.getRemoteAddr());
+        entity.setSite(getSite());
+        entity.setVersao("1");
+        return entity;
+    }
 }
-

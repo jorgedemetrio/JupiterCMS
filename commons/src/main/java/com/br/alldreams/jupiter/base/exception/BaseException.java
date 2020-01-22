@@ -26,15 +26,17 @@ public abstract class BaseException extends Exception {
 
     /**
      * Construtor.
+     * 
      * @param ex Erro.
      */
     public BaseException(final Exception ex) {
         super(ex);
     }
-    
+
     /**
      * Construtor.
-     * @param ex Erro.
+     * 
+     * @param ex          Erro.
      * @param statusParam Status.
      */
     public BaseException(final Exception ex, final HttpStatus statusParam) {
