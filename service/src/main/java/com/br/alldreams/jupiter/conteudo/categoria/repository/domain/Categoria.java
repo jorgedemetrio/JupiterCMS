@@ -44,6 +44,10 @@ public class Categoria extends BaseConteudo implements Serializable {
 	@Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
     private String nome;
 
+    @NotNull
+    @Column(name = "visible", insertable = true, updatable = true, nullable = false)
+    private Boolean visibel;
+
 	@OneToMany(mappedBy = "pai")
 	private List<Categoria> filhas;
 
