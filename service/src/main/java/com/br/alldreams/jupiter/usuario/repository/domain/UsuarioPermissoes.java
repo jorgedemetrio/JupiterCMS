@@ -31,24 +31,24 @@ import lombok.NoArgsConstructor;
 @Table(name = "tb_user_permissions")
 public class UsuarioPermissoes implements Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -5568043946426872072L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -5568043946426872072L;
 
-	@EmbeddedId
-	private PkUsuarioPermissoes id;
+    @EmbeddedId
+    private PkUsuarioPermissoes id;
 
-	@ManyToOne
-	@JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
-	private Usuario criador;
+    @ManyToOne
+    @JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
+    private Usuario criador;
 
-	@NotEmpty
-	@Column(name = "ip_creator", insertable = true, updatable = false, nullable = false, length = 20)
-	private String ipCriador;
+    @NotEmpty
+    @Column(name = "ip_creator", insertable = true, updatable = false, nullable = false, length = 20)
+    private String ipCriador;
 
-	@NotNull
-	@Column(name = "created_date", insertable = true, updatable = false, nullable = false)
-	private Date dataCriacao;
+    @NotNull
+    @Column(name = "created_date", insertable = true, updatable = false, nullable = false)
+    private Date dataCriacao;
 
 }

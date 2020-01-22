@@ -27,18 +27,17 @@ import lombok.NoArgsConstructor;
 @Embeddable
 public class PkUsuarioPermissoes implements Serializable {
 
-
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 6521705085922829176L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6521705085922829176L;
 
     @Enumerated(EnumType.STRING)
-	@Column(name = "permission", insertable = true, updatable = false, nullable = false, unique = false, length = 200)
-	private PermissoesEnum permissao;
+    @Column(name = "permission", insertable = true, updatable = false, nullable = false, unique = false, length = 200)
+    private PermissoesEnum permissao;
 
-	@ManyToOne
-	@JoinColumn(name = "id_user", insertable = true, updatable = false, nullable = false, unique = false)
-	private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "id_user", insertable = true, updatable = false, nullable = false, unique = false)
+    private Usuario usuario;
 
 }

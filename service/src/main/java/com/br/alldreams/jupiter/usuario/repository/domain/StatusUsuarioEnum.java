@@ -14,18 +14,18 @@ public enum StatusUsuarioEnum {
 
     public static StatusUsuarioEnum fromString(final String valor) {
         switch (valor) {
-            case "DELETADO":
-            case "D":
-                return DELETADO;
-            case "A":
-            case "ATIVO":
-                return ATIVO;
-            case "B":
-            case "BLOQUEADO":
-                return BLOQUEADO;
-            case "E":
-            case "EXPIRADO":
-                return EXPIRADO;
+        case "DELETADO":
+        case "D":
+            return DELETADO;
+        case "A":
+        case "ATIVO":
+            return ATIVO;
+        case "B":
+        case "BLOQUEADO":
+            return BLOQUEADO;
+        case "E":
+        case "EXPIRADO":
+            return EXPIRADO;
         }
 
         throw new RuntimeException("Enumerate não encontrado");

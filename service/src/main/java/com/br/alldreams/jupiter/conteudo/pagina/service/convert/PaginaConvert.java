@@ -17,8 +17,4 @@ import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.Pagina;
 @Mapper(componentModel = "spring", implementationName = "ConteudoConvertImpl", implementationPackage = "<PACKAGE_NAME>.impl", imports = { Pagina.class })
 public interface PaginaConvert extends ConvertPadrao<PaginaDTO, Pagina> {
 
-
-
-
-
 }

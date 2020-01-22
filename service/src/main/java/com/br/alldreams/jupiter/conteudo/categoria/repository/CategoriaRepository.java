@@ -31,5 +31,4 @@ public interface CategoriaRepository extends JpaRepository<Categoria, UUID> {
     @Query("SELECT g FROM Grupo as g JOIN g.site as s WHERE s.id = :site AND g.status = 'A' ")
     Page<Categoria> todos(@Param("site") UUID site, Pageable paginacao);
 
-
 }

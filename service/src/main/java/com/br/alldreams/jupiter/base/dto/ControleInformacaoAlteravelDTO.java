@@ -19,13 +19,10 @@ import lombok.Setter;
 @Setter
 public abstract class ControleInformacaoAlteravelDTO extends ControleInformacaoDTO {
 
-
-
     private UsuarioDTO alterador;
 
-	private String ipAlterador;
+    private String ipAlterador;
 
     private Date dataAlteracao;
-
 
 }

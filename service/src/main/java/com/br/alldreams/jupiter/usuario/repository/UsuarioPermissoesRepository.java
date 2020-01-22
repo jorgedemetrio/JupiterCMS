@@ -3,21 +3,17 @@
  */
 package com.br.alldreams.jupiter.usuario.repository;
 
-import java.util.UUID;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
-import com.br.alldreams.jupiter.usuario.repository.domain.Grupo;
 
 /**
  * @author Jess
  * @version 1.0
  * @since 21 de jan de 2020 19:25:08
  */
-public interface UsuarioPermissoes <UsuarioPermissoes , UUID> {
+public interface UsuarioPermissoesRepository <UsuarioPermissoes , UUID> {
 
     @Query("SELECT g FROM UsuarioPermissoes as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'A' ")
     UsuarioPermissoes pegarPorId(@Param("id") UUID id, @Param("site") UUID site);
@@ -31,4 +27,4 @@ public interface UsuarioPermissoes <UsuarioPermissoes , UUID> {
 }
 
 
-}
+

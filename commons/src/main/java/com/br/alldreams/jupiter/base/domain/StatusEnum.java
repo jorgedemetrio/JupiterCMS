@@ -48,6 +48,6 @@ public enum StatusEnum {
 
     public String getDBStatus() {
         return status;
-        }
-
     }
+
+}

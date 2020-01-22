@@ -32,14 +32,13 @@ import lombok.Data;
 @Table(name = "tb_history_pass")
 public class HistoricoSenhaUsuario implements Serializable {
 
-
     /**
      *
      */
     private static final long serialVersionUID = 4325251551325353767L;
 
     @Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", insertable = false, updatable = false, nullable = true)
     private Long id;
 

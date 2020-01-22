@@ -41,7 +41,7 @@ import lombok.Data;
 @Validated
 @Entity
 @Table(name = "tb_product")
-public class Produto extends BaseConteudo{
+public class Produto extends BaseConteudo {
 
     /**
      *
@@ -94,9 +94,8 @@ public class Produto extends BaseConteudo{
     @JoinTable(name = "tb_product_terms", joinColumns = {
             @JoinColumn(name = "id_product", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
                     @JoinColumn(name = "id_term", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
-                            @UniqueConstraint(columnNames = { "id_product", "id_term" }) },
-                            foreignKey = @ForeignKey(value =  ConstraintMode.CONSTRAINT, name = "fk_term_product_prod_id"),
-                            inverseForeignKey = @ForeignKey(value =  ConstraintMode.CONSTRAINT, name = "fk_term_product_term_id"))
+                            @UniqueConstraint(columnNames = { "id_product",
+                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_product_prod_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_product_term_id"))
     private Set<Termo> termos;
 
 }

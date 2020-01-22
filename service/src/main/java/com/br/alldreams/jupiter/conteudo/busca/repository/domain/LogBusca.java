@@ -40,7 +40,6 @@ public class LogBusca implements Serializable {
      */
     private static final long serialVersionUID = 1044322904747203977L;
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
@@ -54,7 +53,6 @@ public class LogBusca implements Serializable {
     @Column(name = "search_term", insertable = true, updatable = false, nullable = false, length = 200)
     private String termoBusca;
 
-
     @NotEmpty
     @Column(name = "ip_creator", insertable = true, updatable = false, nullable = false, length = 20)
     private String ipCriador;
@@ -66,7 +64,6 @@ public class LogBusca implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_site", insertable = true, updatable = false, nullable = true)
     private Site site;
-
 
     @Column(name = "hits", insertable = true, updatable = true, nullable = true)
     private Long acessos;

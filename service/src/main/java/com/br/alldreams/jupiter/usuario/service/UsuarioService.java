@@ -27,32 +27,31 @@ import lombok.extern.java.Log;
 @Service
 public class UsuarioService extends BaseService {
 
-	@Autowired
-	private UsuarioRepository repositorio;
+    @Autowired
+    private UsuarioRepository repositorio;
 
-	@Autowired
-	private UsuarioConvert convert;
+    @Autowired
+    private UsuarioConvert convert;
 
-	public Page<UsuarioDTO> buscaPorNome(final String nome, final Integer itensPorPagina, final Integer pagina,
-			final String sentido, final String ordenacao) throws SiteNaoExisteServiceException {
+    public Page<UsuarioDTO> buscaPorNome(final String nome, final Integer itensPorPagina, final Integer pagina, final String sentido, final String ordenacao)
+            throws SiteNaoExisteServiceException {
 
-		final Page<Usuario> usuairosPaginados = this.repositorio.buscarPorNome(getSite().getId(), nome,
-				getPageable(pagina, itensPorPagina, sentido, ordenacao));
+        final Page<Usuario> usuairosPaginados = this.repositorio.buscarPorNome(getSite().getId(), nome,
+                getPageable(pagina, itensPorPagina, sentido, ordenacao));
 
-		final List<UsuarioDTO> itens = this.convert.toDTO(usuairosPaginados.getContent());
+        final List<UsuarioDTO> itens = this.convert.toDTO(usuairosPaginados.getContent());
 
-		return getPagina(itens, usuairosPaginados);
+        return getPagina(itens, usuairosPaginados);
 
-	}
+    }
 
-	public Page<UsuarioDTO> todos(final Integer itensPorPagina, final Integer pagina, final String sentido,
-			final String ordenacao) throws SiteNaoExisteServiceException {
-		final Page<Usuario> usuairosPaginados = this.repositorio.todos(getSite().getId(),
-				getPageable(pagina, itensPorPagina, sentido, ordenacao));
+    public Page<UsuarioDTO> todos(final Integer itensPorPagina, final Integer pagina, final String sentido, final String ordenacao)
+            throws SiteNaoExisteServiceException {
+        final Page<Usuario> usuairosPaginados = this.repositorio.todos(getSite().getId(), getPageable(pagina, itensPorPagina, sentido, ordenacao));
 
-		final List<UsuarioDTO> itens = this.convert.toDTO(usuairosPaginados.getContent());
+        final List<UsuarioDTO> itens = this.convert.toDTO(usuairosPaginados.getContent());
 
-		return getPagina(itens, usuairosPaginados);
-	}
+        return getPagina(itens, usuairosPaginados);
+    }
 
 }

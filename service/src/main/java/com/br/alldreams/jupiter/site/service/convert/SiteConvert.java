@@ -14,10 +14,7 @@ import com.br.alldreams.jupiter.site.repository.domain.Site;
  * @since 16 de jan de 2020 01:25:31
  * @version 1.0
  */
-@Mapper(componentModel = "spring", implementationName = "SiteConvertImpl", implementationPackage = "<PACKAGE_NAME>.impl", imports = {
-		Site.class })
+@Mapper(componentModel = "spring", implementationName = "SiteConvertImpl", implementationPackage = "<PACKAGE_NAME>.impl", imports = { Site.class })
 public interface SiteConvert extends ConvertPadrao<SiteDTO, Site> {
-
-
 
 }
