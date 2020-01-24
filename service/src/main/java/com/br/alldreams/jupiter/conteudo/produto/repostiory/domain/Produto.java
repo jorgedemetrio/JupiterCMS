@@ -24,6 +24,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.br.alldreams.jupiter.conteudo.arquivo.repository.domain.Arquivo;
 import com.br.alldreams.jupiter.conteudo.base.repository.convert.ImagemConteudoConvert;
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.BaseConteudo;
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.Imagem;
@@ -82,6 +83,9 @@ public class Produto extends BaseConteudo {
     @ManyToMany(mappedBy = "id.produtoPrincipal")
     private Set<Produto> assossiados;
 
+    @OneToMany(mappedBy = "id.produto")
+    private Set<TabelaPrecoProduto> precos;
+
     @ManyToOne
     @JoinColumn(name = "id_category", insertable = true, updatable = true, nullable = false)
     private Categoria categoria;
@@ -97,5 +101,13 @@ public class Produto extends BaseConteudo {
                             @UniqueConstraint(columnNames = { "id_product",
                                     "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_product_prod_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_product_term_id"))
     private Set<Termo> termos;
+
+    @ManyToMany
+    @JoinTable(name = "tb_product_file", joinColumns = {
+            @JoinColumn(name = "id_product", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_file", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
+                            @UniqueConstraint(columnNames = { "id_product",
+                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_product_prod_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_product_file_id"))
+    private Set<Arquivo> arquivos;
 
 }
