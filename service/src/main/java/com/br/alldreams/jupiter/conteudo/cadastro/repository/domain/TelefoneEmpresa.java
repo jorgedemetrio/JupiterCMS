@@ -30,6 +30,11 @@ import lombok.Data;
 public class TelefoneEmpresa extends ControleInformacaoAlteravel {
 
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 5531433252871790876L;
+
     @NotEmpty
     @Size(min = 1, max = 2000)
     @Column(name = "nome", insertable = true, updatable = true, nullable = false, length = 2000)
