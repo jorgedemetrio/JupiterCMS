@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -25,7 +27,7 @@ import lombok.Data;
  * @version 1.0
  */
 @Entity
-@Table(name = "tb_pessoa")
+@Table(name = "tb_person")
 @Data
 @Validated
 public class Pessoa extends ControleInformacaoAlteravel {
@@ -44,8 +46,12 @@ public class Pessoa extends ControleInformacaoAlteravel {
     private String documento;
 
     @CPF
+    @Size(max = 14)
+    @Column(name = "national_tax", insertable = true, updatable = true, nullable = true, length = 2000)
     private String cpf;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type_user", insertable = true, updatable = true, nullable = true, length = 20)
     private TipoPessoaEnum tipo;
 
     @OneToMany(mappedBy = "pessoa")
