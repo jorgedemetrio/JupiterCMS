@@ -28,17 +28,14 @@ import lombok.Data;
 @Table(name = "tb_term")
 public class Termo extends BaseConteudo implements Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -5568866381310376850L;
-
+    /**
+     *
+     */
+    private static final long serialVersionUID = -5568866381310376850L;
 
     @NotEmpty
     @Size(min = 1, max = 200)
-	@Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
+    @Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
     private String nome;
-
-
 
 }

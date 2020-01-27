@@ -41,19 +41,19 @@ public class Categoria extends BaseConteudo implements Serializable {
 
     @NotEmpty
     @Size(min = 1, max = 200)
-	@Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
+    @Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
     private String nome;
 
     @NotNull
     @Column(name = "visible", insertable = true, updatable = true, nullable = false)
     private Boolean visibel;
 
-	@OneToMany(mappedBy = "pai")
-	private List<Categoria> filhas;
+    @OneToMany(mappedBy = "pai")
+    private List<Categoria> filhas;
 
-	@ManyToOne
-	@JoinColumn(name = "id_parent", insertable = true, updatable = true, nullable = true)
-	private Categoria pai;
+    @ManyToOne
+    @JoinColumn(name = "id_parent", insertable = true, updatable = true, nullable = true)
+    private Categoria pai;
 
     @NotNull
     @Enumerated(EnumType.STRING)

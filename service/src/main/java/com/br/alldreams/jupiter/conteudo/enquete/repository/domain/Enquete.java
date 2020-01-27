@@ -6,13 +6,19 @@ package com.br.alldreams.jupiter.conteudo.enquete.repository.domain;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,6 +27,7 @@ import org.springframework.validation.annotation.Validated;
 
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.BaseConteudo;
 import com.br.alldreams.jupiter.conteudo.categoria.repository.domain.Categoria;
+import com.br.alldreams.jupiter.conteudo.termo.repository.domain.Termo;
 
 import lombok.Data;
 
@@ -81,5 +88,13 @@ public class Enquete extends BaseConteudo implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_category", insertable = true, updatable = true, nullable = false)
     private Categoria categoria;
+
+    @ManyToMany
+    @JoinTable(name = "tb_content_terms", joinColumns = {
+            @JoinColumn(name = "id_content", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_term", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
+                            @UniqueConstraint(columnNames = { "id_content",
+                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_content_cnt_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_content_term_id"))
+    private Set<Termo> termos;
 
 }

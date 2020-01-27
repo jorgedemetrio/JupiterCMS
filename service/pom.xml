@@ -173,32 +173,32 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.0</version>
-				<configuration>
-					<sourceDirectories>
-						<sourceDirectory>src/main/java</sourceDirectory>
-					</sourceDirectories>
-					<configLocation>src/main/config/checkstyle.xml</configLocation>
-					<suppressionsLocation>src/main/config/checkstyle-suppressions.xml</suppressionsLocation>
-					<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression>
-					<encoding>UTF-8</encoding>
-					<consoleOutput>true</consoleOutput>
-					<failsOnError>true</failsOnError>
-					<linkXRef>false</linkXRef>
-				</configuration>
-				<executions>
-					<execution>
-						<id>validate</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-checkstyle-plugin</artifactId> -->
+<!-- 				<version>3.1.0</version> -->
+<!-- 				<configuration> -->
+<!-- 					<sourceDirectories> -->
+<!-- 						<sourceDirectory>src/main/java</sourceDirectory> -->
+<!-- 					</sourceDirectories> -->
+<!-- 					<configLocation>src/main/config/checkstyle.xml</configLocation> -->
+<!-- 					<suppressionsLocation>src/main/config/checkstyle-suppressions.xml</suppressionsLocation> -->
+<!-- 					<suppressionsFileExpression>checkstyle.suppressions.file</suppressionsFileExpression> -->
+<!-- 					<encoding>UTF-8</encoding> -->
+<!-- 					<consoleOutput>true</consoleOutput> -->
+<!-- 					<failsOnError>true</failsOnError> -->
+<!-- 					<linkXRef>false</linkXRef> -->
+<!-- 				</configuration> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>validate</id> -->
+<!-- 						<phase>validate</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>check</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -238,18 +238,18 @@
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>${findbugsVersion}</version>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.0</version>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>checkstyle</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-checkstyle-plugin</artifactId> -->
+<!-- 				<version>3.1.0</version> -->
+<!-- 				<reportSets> -->
+<!-- 					<reportSet> -->
+<!-- 						<reports> -->
+<!-- 							<report>checkstyle</report> -->
+<!-- 						</reports> -->
+<!-- 					</reportSet> -->
+<!-- 				</reportSets> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>

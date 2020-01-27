@@ -23,27 +23,20 @@ import lombok.Data;
 @Validated
 public class PaginaDTO extends BaseConteudoDTO implements Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -2909582859276481664L;
-
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2909582859276481664L;
 
     private String titulo;
 
+    private String conteudo;
 
-	private String conteudo;
+    private String destaque;
 
-
-	private String destaque;
-
-
-
-	private CategoriaDTO categoria;
-
+    private CategoriaDTO categoria;
 
     private List<ImagemDTO> imagens;
 
-
-	private List<TermoDTO> termos;
+    private List<TermoDTO> termos;
 }

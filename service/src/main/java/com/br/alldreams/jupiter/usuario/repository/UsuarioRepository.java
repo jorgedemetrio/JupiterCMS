@@ -32,7 +32,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
      * @return Retorna um usuário paginado.
      */
     @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE upper(u.nome) like upper(trim(:nome + '%')) AND s.id = :site AND u.status = 'A'")
-	Page<Usuario> buscarPorNome(@Param("site") UUID site, @Param("nome") String nome, Pageable paginacao);
+    Page<Usuario> buscarPorNome(@Param("site") UUID site, @Param("nome") String nome, Pageable paginacao);
 
     /**
      * Busca o usuário logado pela email (campo de autenticação) e o site que está
@@ -44,21 +44,21 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
      * @since 16 de jan de 2020 01:39:03
      */
     @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE u.email = :email AND s.id = :site AND u.status = 'A'")
-	Usuario buscarUsuario(@Param("site") UUID site, @Param("email") String email);
+    Usuario buscarUsuario(@Param("site") UUID site, @Param("email") String email);
 
     /**
-	 * Busca o usuário logado pela email (campo de autenticação) e o site que está
-	 * logado.
-	 *
-	 * @param site
-	 * @param email
-	 * @return
-	 * @since 16 de jan de 2020 01:39:03
-	 */
-	@Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE s.id = :site AND u.email = :email AND u.senha = :senha AND u.status = 'A'")
-	Usuario login(@Param("site") UUID site, @Param("email") String email, @Param("senha") String senha);
+     * Busca o usuário logado pela email (campo de autenticação) e o site que está
+     * logado.
+     *
+     * @param site
+     * @param email
+     * @return
+     * @since 16 de jan de 2020 01:39:03
+     */
+    @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE s.id = :site AND u.email = :email AND u.senha = :senha AND u.status = 'A'")
+    Usuario login(@Param("site") UUID site, @Param("email") String email, @Param("senha") String senha);
 
-	/**
+    /**
      * Busca usuário por nome.
      *
      * @since 16 de jan de 2020 11:25:56
@@ -68,6 +68,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
      * @return Retorna um usuário paginado.
      */
     @Query("SELECT u FROM Usuario AS u JOIN u.site AS s WHERE s.id = :site AND u.status = 'A'")
-	Page<Usuario> todos(@Param("site") UUID site, Pageable paginacao);
+    Page<Usuario> todos(@Param("site") UUID site, Pageable paginacao);
 
 }

@@ -11,6 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 
@@ -28,22 +29,23 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class ControleInformacaoAlteravel extends ControleInformacao {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 7808272602447468709L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 7808272602447468709L;
 
-	@ManyToOne
-	@JoinColumn(name = "id_user_altered", insertable = true, updatable = true, nullable = true)
-	private Usuario alterador;
+    @ManyToOne
+    @JoinColumn(name = "id_user_altered", insertable = true, updatable = true, nullable = true)
+    private Usuario alterador;
 
+    @Column(name = "ip_alterator", insertable = true, updatable = true, nullable = true, length = 20)
+    private String ipAlterador;
 
-	@Column(name = "ip_alterator", insertable = true, updatable = true, nullable = true, length = 20)
-	private String ipAlterador;
+    @Column(name = "updated_date", insertable = true, updatable = false, nullable = false)
+    private Date dataAlteracao;
 
-
-	@Column(name = "updated_date", insertable = true, updatable = false, nullable = false)
-	private Date dataAlteracao;
-
+    @NotEmpty
+    @Column(name = "version", insertable = true, updatable = true, nullable = false, length = 250)
+    private String versao;
 
 }

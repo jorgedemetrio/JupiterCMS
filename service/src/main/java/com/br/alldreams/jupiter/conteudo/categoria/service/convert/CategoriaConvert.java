@@ -17,5 +17,4 @@ import com.br.alldreams.jupiter.conteudo.categoria.repository.domain.Categoria;
 @Mapper(componentModel = "spring", implementationName = "CategoriaConvertImpl", implementationPackage = "<PACKAGE_NAME>.impl", imports = { Categoria.class })
 public interface CategoriaConvert extends ConvertPadrao<CategoriaDTO, Categoria> {
 
-
 }

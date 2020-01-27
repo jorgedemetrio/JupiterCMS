@@ -36,65 +36,64 @@ import lombok.extern.java.Log;
 @Service
 public class PaginaService extends BaseService {
 
-	@Autowired
-	private PaginaRepository repositorio;
+    @Autowired
+    private PaginaRepository repositorio;
 
-	@Autowired
-	private PaginaConvert conteudoConvert;
+    @Autowired
+    private PaginaConvert conteudoConvert;
 
-	public void apagar(final String codigo) throws DadosInvalidosServiceException, ErroInternoServiceException {
-		if (Objects.isNull(codigo) || codigo.isEmpty()) {
-			throw createException("campos-invalidos", DadosInvalidosServiceException.class, "codigo");
-		}
+    public void apagar(final String codigo) throws DadosInvalidosServiceException, ErroInternoServiceException {
+        if (Objects.isNull(codigo) || codigo.isEmpty()) {
+            throw createException("campos-invalidos", DadosInvalidosServiceException.class, "codigo");
+        }
         repositorio.deleteById(UUID.fromString(codigo));
-	}
+    }
 
     public Page<PaginaDTO> buscar(final String titulo, final Integer pagina, final Integer itensPorPagina, final String ordem, final String sentido)
             throws DadosInvalidosServiceException, ErroInternoServiceException, SiteNaoExisteServiceException {
-		if (Objects.isNull(titulo) || titulo.isEmpty()) {
-			throw createException("campos-invalidos", DadosInvalidosServiceException.class, "titulo");
-		}
+        if (Objects.isNull(titulo) || titulo.isEmpty()) {
+            throw createException("campos-invalidos", DadosInvalidosServiceException.class, "titulo");
+        }
 
         final Page<Pagina> paginaConteudo = repositorio.buscaPorTitulo(titulo, getSite().getId(), getPageable(pagina, itensPorPagina, ordem, sentido));
 
         final List<PaginaDTO> itens = conteudoConvert.toDTO(paginaConteudo.getContent());
 
         return getPagina(itens, paginaConteudo);
-	}
+    }
 
-	public void gravar(final PaginaDTO conteudo) throws DadosInvalidosServiceException, ErroInternoServiceException {
-		validar(conteudo);
+    public void gravar(final PaginaDTO conteudo) throws DadosInvalidosServiceException, ErroInternoServiceException {
+        validar(conteudo);
         repositorio.save(conteudoConvert.toEntity(conteudo));
-	}
+    }
 
-	/**
-	 * Com o código tenta localizar um conteuod.
-	 *
-	 * @param codigo Codigo de busca.
-	 * @return Retorna uma ConteudoDTO.
-	 * @throws ItemNaoEncontradoServiceException Se não achar.
-	 * @throws ErroInternoServiceException       Erro interno.
-	 * @since 12 de jan de 2020 04:11:09
-	 */
-	public PaginaDTO pegar(final String codigo)
-			throws ItemNaoEncontradoServiceException, ErroInternoServiceException {
-		Pagina conteudo;
-		try {
+    /**
+     * Com o código tenta localizar um conteuod.
+     *
+     * @param codigo Codigo de busca.
+     * @return Retorna uma ConteudoDTO.
+     * @throws ItemNaoEncontradoServiceException Se não achar.
+     * @throws ErroInternoServiceException       Erro interno.
+     * @since 12 de jan de 2020 04:11:09
+     */
+    public PaginaDTO pegar(final String codigo) throws ItemNaoEncontradoServiceException, ErroInternoServiceException {
+        Pagina conteudo;
+        try {
             conteudo = repositorio.pegarPorId(UUID.fromString(codigo), getSite().getId());
             if (isNull(conteudo)) {
                 return conteudoConvert.toDTO(conteudo);
-			}
-		} catch (final Exception ex) {
-			log.log(Level.SEVERE, "Erro ao buscar matérias.", ex);
-			throw new ErroInternoServiceException(ex);
-		}
-		throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Matéria");
-	}
+            }
+        } catch (final Exception ex) {
+            log.log(Level.SEVERE, "Erro ao buscar matérias.", ex);
+            throw new ErroInternoServiceException(ex);
+        }
+        throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Matéria");
+    }
 
-	public List<PaginaDTO> todos() throws ErroInternoServiceException {
-		final List<PaginaDTO> conteudosDTO = new ArrayList<>();
+    public List<PaginaDTO> todos() throws ErroInternoServiceException {
+        final List<PaginaDTO> conteudosDTO = new ArrayList<>();
         repositorio.findAll().forEach(n -> conteudosDTO.add(conteudoConvert.toDTO(n)));
-		return conteudosDTO;
-	}
+        return conteudosDTO;
+    }
 
 }

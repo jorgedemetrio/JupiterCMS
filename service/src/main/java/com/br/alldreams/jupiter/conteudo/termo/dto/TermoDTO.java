@@ -22,15 +22,12 @@ import lombok.Data;
 @Validated
 public class TermoDTO extends BaseConteudoDTO implements Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = -1678668533717716459L;
-
+    /**
+     *
+     */
+    private static final long serialVersionUID = -1678668533717716459L;
 
     @NotEmpty
     private String nome;
-
-
 
 }

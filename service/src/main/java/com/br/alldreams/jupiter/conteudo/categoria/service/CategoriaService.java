@@ -44,12 +44,6 @@ public class CategoriaService extends BaseService {
     @Autowired
     private CategoriaConvert convert;
 
-
-
-
-
-
-
     /**
      * Atualiza os dados do Categoria.
      *
@@ -65,8 +59,7 @@ public class CategoriaService extends BaseService {
      * @since 16 de jan de 2020 03:12:28
      */
     public void atualizar(final CategoriaDTO categoriaDTO)
-            throws DadosInvalidosServiceException, SemPermissaoServiceException, SiteNaoExisteServiceException,
-            ItemNaoEncontradoServiceException {
+            throws DadosInvalidosServiceException, SemPermissaoServiceException, SiteNaoExisteServiceException, ItemNaoEncontradoServiceException {
         validar(categoriaDTO);
         if (isNull(categoriaDTO.getId())) {
             throw createException("campos-invalidos", DadosInvalidosServiceException.class, "id (Requirido)");
@@ -105,25 +98,21 @@ public class CategoriaService extends BaseService {
      * @throws SiteNaoExisteServiceException     Site não exite na base.
      * @since 16 de jan de 2020 03:14:53
      */
-    public Page<CategoriaDTO> buscaPorNome(final String nome, final Integer pagina, final Integer itensPorPagina,
-            final String ordem, final String sentido)
+    public Page<CategoriaDTO> buscaPorNome(final String nome, final Integer pagina, final Integer itensPorPagina, final String ordem, final String sentido)
             throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException, SiteNaoExisteServiceException {
         if (isNull(nome) || nome.isEmpty()) {
             throw createException("campo-abrigatorio", DadosInvalidosServiceException.class, "Nome");
         }
         List<CategoriaDTO> itens;
-        final Page<Categoria> categorias = this.repositorio.pegarPorNome(nome, getSite().getId(),
-                getPageable(pagina, itensPorPagina, ordem, sentido));
+        final Page<Categoria> categorias = this.repositorio.pegarPorNome(nome, getSite().getId(), getPageable(pagina, itensPorPagina, ordem, sentido));
 
         if (isNull(categorias)) {
             itens = new ArrayList<>();
-        }
-        else {
+        } else {
             itens = this.convert.toDTO(categorias.getContent());
         }
         return getPagina(itens, categorias);
     }
-
 
     /**
      * Apaga um categoria pelo seu id.
@@ -138,8 +127,8 @@ public class CategoriaService extends BaseService {
      *                                           grava a informação ou sua sessão.
      * @since 16 de jan de 2020 03:18:24
      */
-    public void deletar(final String idCategoria) throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException,
-            SiteNaoExisteServiceException, SemPermissaoServiceException {
+    public void deletar(final String idCategoria)
+            throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException, SiteNaoExisteServiceException, SemPermissaoServiceException {
         if (isNull(idCategoria) || idCategoria.isEmpty()) {
             throw createException("campo-abrigatorio", DadosInvalidosServiceException.class, "Código da categoria");
         }
@@ -151,12 +140,11 @@ public class CategoriaService extends BaseService {
         this.repositorio.delete(setDadosCricao(categoria));
     }
 
-
     /**
      * Grava um novo categoria.
      *
-     * @param categoriaDTO Grava o categoria informado, não deve passar o ID para essa
-     *                 operação.
+     * @param categoriaDTO Grava o categoria informado, não deve passar o ID para
+     *                     essa operação.
      * @throws DadosInvalidosServiceException Caso envie o formulário de forma
      *                                        inválida.
      * @throws SemPermissaoServiceException   O usuário não tem permissão para grava
@@ -164,12 +152,10 @@ public class CategoriaService extends BaseService {
      * @throws SiteNaoExisteServiceException  Site não exite na base.
      * @since 16 de jan de 2020 03:19:26
      */
-    public void novo(final CategoriaDTO categoriaDTO)
-            throws DadosInvalidosServiceException, SemPermissaoServiceException, SiteNaoExisteServiceException {
+    public void novo(final CategoriaDTO categoriaDTO) throws DadosInvalidosServiceException, SemPermissaoServiceException, SiteNaoExisteServiceException {
         validar(categoriaDTO);
         if (nonNull(categoriaDTO.getId())) {
-            throw createException("campos-invalidos", DadosInvalidosServiceException.class,
-                    "id (Deve estar tentando gravar um categoria que já existe)");
+            throw createException("campos-invalidos", DadosInvalidosServiceException.class, "id (Deve estar tentando gravar um categoria que já existe)");
         }
         final Categoria categoria = this.convert.toEntity(categoriaDTO);
         // categoria.setStatus(StatusConteudoEnum.ATIVO);
@@ -180,11 +166,6 @@ public class CategoriaService extends BaseService {
             throw e;
         }
     }
-
-
-
-
-
 
     /**
      * Pega um Categoria por ID.
@@ -231,18 +212,15 @@ public class CategoriaService extends BaseService {
      * @throws SiteNaoExisteServiceException     Site não exite na base.
      * @since 16 de jan de 2020 03:14:53
      */
-    public Page<CategoriaDTO> todos( final Integer pagina, final Integer itensPorPagina,
-            final String ordem, final String sentido)
+    public Page<CategoriaDTO> todos(final Integer pagina, final Integer itensPorPagina, final String ordem, final String sentido)
             throws DadosInvalidosServiceException, ItemNaoEncontradoServiceException, SiteNaoExisteServiceException {
 
         List<CategoriaDTO> itens;
-        final Page<Categoria> categorias = this.repositorio.todos(getSite().getId(),
-                getPageable(pagina, itensPorPagina, ordem,sentido));
+        final Page<Categoria> categorias = this.repositorio.todos(getSite().getId(), getPageable(pagina, itensPorPagina, ordem, sentido));
 
         if (isNull(categorias)) {
             itens = new ArrayList<>();
-        }
-        else {
+        } else {
             itens = this.convert.toDTO(categorias.getContent());
         }
         return getPagina(itens, categorias);

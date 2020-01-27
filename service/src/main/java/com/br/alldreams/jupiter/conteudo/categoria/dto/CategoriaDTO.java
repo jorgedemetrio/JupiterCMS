@@ -27,25 +27,20 @@ import lombok.Data;
 @Validated
 public class CategoriaDTO extends BaseConteudoDTO implements Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 7965042967393910325L;
-
-
+    /**
+     *
+     */
+    private static final long serialVersionUID = 7965042967393910325L;
 
     @NotEmpty
     @Size(min = 1, max = 200)
     private String nome;
 
+    @Valid
+    private List<CategoriaDTO> filhas;
 
     @Valid
-	private List<CategoriaDTO> filhas;
-
-
-    @Valid
-	private CategoriaDTO pai;
-
+    private CategoriaDTO pai;
 
     @NotNull
     private TipoCategoriaEnum tipo;

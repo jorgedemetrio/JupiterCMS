@@ -33,31 +33,27 @@ public class Usuario extends ControleInformacaoAlteravel implements Serializable
     */
     private static final long serialVersionUID = -5288215955799884641L;
 
-
     @NotEmpty
-	@Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
+    @Column(name = "name", insertable = true, updatable = true, nullable = false, length = 200)
     private String nome;
 
-	@NotEmpty
-	@Column(name = "email", insertable = true, updatable = true, nullable = false, length = 200)
-	private String email;
+    @NotEmpty
+    @Column(name = "email", insertable = true, updatable = true, nullable = false, length = 200)
+    private String email;
 
-
-	@NotEmpty
-	@Column(name = "pass", insertable = true, updatable = true, nullable = false, length = 200)
-	private String senha;
+    @NotEmpty
+    @Column(name = "pass", insertable = true, updatable = true, nullable = false, length = 200)
+    private String senha;
 
     @NotEmpty
     @Column(name = "key_google", insertable = true, updatable = true, nullable = false, length = 200)
     private String chaveGoogle;
 
-	@NotEmpty
-	@Column(name = "status", insertable = true, updatable = true, nullable = false, length = 20)
-	private StatusUsuarioEnum status;
+    @NotEmpty
+    @Column(name = "status", insertable = true, updatable = true, nullable = false, length = 20)
+    private StatusUsuarioEnum status;
 
-	@OneToMany(mappedBy = "id.usuario")
-	private Set<UsuarioPermissoes> permissoes;
-
-
+    @OneToMany(mappedBy = "id.usuario")
+    private Set<UsuarioPermissoes> permissoes;
 
 }

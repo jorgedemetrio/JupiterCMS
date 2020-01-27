@@ -15,8 +15,8 @@ import lombok.Data;
 @Data
 public class ItemMensagem {
 
-	private String descricao;
-	private String codigo;
-	private HttpStatus status;
-	private String classe;
+    private String descricao;
+    private String codigo;
+    private HttpStatus status;
+    private String classe;
 }

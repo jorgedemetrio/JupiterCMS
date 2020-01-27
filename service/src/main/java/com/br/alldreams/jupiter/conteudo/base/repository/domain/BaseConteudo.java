@@ -27,39 +27,37 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class BaseConteudo extends ControleInformacaoAlteravel {
 
-
-
     /**
      *
      */
     private static final long serialVersionUID = -1086879224945651000L;
 
     @NotEmpty
-	@Size(min = 1, max = 250)
-	@Column(name = "meta_description", insertable = true, updatable = true, nullable = true, length = 250)
-	private String metaDescricao;
+    @Size(min = 1, max = 250)
+    @Column(name = "meta_description", insertable = true, updatable = true, nullable = true, length = 250)
+    private String metaDescricao;
 
-	@Column(name = "hits", insertable = true, updatable = true, nullable = true)
+    @Column(name = "hits", insertable = true, updatable = true, nullable = true)
     private Long acessos;
 
     @Column(name = "likes", insertable = true, updatable = true, nullable = true)
     private Long curtidas;
 
     @NotEmpty
-	@Size(min = 1, max = 250)
-	@Column(name = "meta_keywords", insertable = true, updatable = true, nullable = true, length = 250)
-	private String palavrasChave;
+    @Size(min = 1, max = 250)
+    @Column(name = "meta_keywords", insertable = true, updatable = true, nullable = true, length = 250)
+    private String palavrasChave;
 
-	@NotEmpty
-	@Size(min = 1, max = 250)
-	@Column(name = "file_name", insertable = true, updatable = true, nullable = false, length = 250)
-	private String nomeArquivo;
+    @NotEmpty
+    @Size(min = 1, max = 250)
+    @Column(name = "file_name", insertable = true, updatable = true, nullable = false, length = 250)
+    private String nomeArquivo;
 
-	@NotNull
+    @NotNull
     @Column(name = "status", insertable = true, updatable = true, nullable = false, length = 1)
-	private StatusConteudoEnum status;
+    private StatusConteudoEnum status;
 
-	@NotNull
+    @NotNull
     @Column(name = "access", insertable = true, updatable = true, nullable = false, length = 20)
     private AcessoEnum acesso;
 

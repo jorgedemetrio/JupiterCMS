@@ -9,19 +9,19 @@ package com.br.alldreams.jupiter.conteudo.base.repository.domain;
  * @version 1.0
  */
 public enum StatusConteudoEnum {
-	/**
-	 * Cotnteúdo deletado
-	 */
+    /**
+     * Cotnteúdo deletado
+     */
     DELETADO("D"),
 
-	/**
-	 * Conteduo publicado
-	 */
+    /**
+     * Conteduo publicado
+     */
     PUBLICADO("P"),
 
-	/**
-	 * Não publicado
-	 */
+    /**
+     * Não publicado
+     */
     NAO_PUBLICADO("N");
 
     public static StatusConteudoEnum fromString(final String valor) {

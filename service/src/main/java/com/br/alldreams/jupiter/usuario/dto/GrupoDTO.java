@@ -38,6 +38,6 @@ public class GrupoDTO extends ControleInformacaoAlteravelDTO implements Serializ
 
     private GrupoDTO pai;
 
-	private StatusEnum status;
+    private StatusEnum status;
 
 }

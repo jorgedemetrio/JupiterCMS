@@ -36,7 +36,7 @@ public class Imagem implements Serializable {
     @NotNull
     private Boolean destaque;
 
-	@NotNull
-	private TipoImagemEnum tipo;
+    @NotNull
+    private TipoImagemEnum tipo;
 
 }

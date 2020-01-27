@@ -36,40 +36,32 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class ControleInformacao implements Serializable {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
-//	private Long id;
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 754453971544664891L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 754453971544664891L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
-	private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
+    private UUID id;
 
-
-	@ManyToOne
-	@JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
-	private Usuario criador;
-
-	@NotEmpty
-	@Column(name = "version", insertable = true, updatable = true, nullable = false, length = 250)
-	private String versao;
-
-	@NotEmpty
-	@Column(name = "ip_creator", insertable = true, updatable = false, nullable = false, length = 20)
-	private String ipCriador;
-
-	@NotNull
-	@Column(name = "created_date", insertable = true, updatable = false, nullable = false)
-	private Date dataCriacao;
+    @ManyToOne
+    @JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
+    private Usuario criador;
 
 
-	@ManyToOne
-	@JoinColumn(name = "id_site", insertable = true, updatable = false, nullable = true)
-	private Site site;
+
+    @NotEmpty
+    @Column(name = "ip_creator", insertable = true, updatable = false, nullable = false, length = 20)
+    private String ipCriador;
+
+    @NotNull
+    @Column(name = "created_date", insertable = true, updatable = false, nullable = false)
+    private Date dataCriacao;
+
+    @ManyToOne
+    @JoinColumn(name = "id_site", insertable = true, updatable = false, nullable = true)
+    private Site site;
 }

@@ -23,6 +23,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.br.alldreams.jupiter.conteudo.arquivo.repository.domain.Arquivo;
 import com.br.alldreams.jupiter.conteudo.base.repository.convert.ImagemConteudoConvert;
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.BaseConteudo;
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.Imagem;
@@ -47,36 +48,40 @@ public class Pagina extends BaseConteudo implements Serializable {
      */
     private static final long serialVersionUID = 1897130732286197263L;
 
-
-
     @NotEmpty
     @Size(min = 1, max = 200)
-	@Column(name = "title", insertable = true, updatable = true, nullable = false, length = 200)
+    @Column(name = "title", insertable = true, updatable = true, nullable = false, length = 200)
     private String titulo;
 
     @NotEmpty
-	@Column(name = "content", insertable = true, updatable = true, nullable = false, length = 200)
-	private String conteudo;
+    @Column(name = "content", insertable = true, updatable = true, nullable = false, length = 200)
+    private String conteudo;
 
     @NotEmpty
-	@Column(name = "spotlight", insertable = true, updatable = true, nullable = false, length = 200)
-	private String destaque;
+    @Column(name = "spotlight", insertable = true, updatable = true, nullable = false, length = 200)
+    private String destaque;
 
+    @ManyToOne
+    @JoinColumn(name = "id_category", insertable = true, updatable = true, nullable = false)
+    private Categoria categoria;
 
-	@ManyToOne
-	@JoinColumn(name = "id_category", insertable = true, updatable = true, nullable = false)
-	private Categoria categoria;
-
-	@Column(name = "images", insertable = true, updatable = true, nullable = true, length = 2000)
-	@Convert(converter = ImagemConteudoConvert.class)
+    @Column(name = "images", insertable = true, updatable = true, nullable = true, length = 2000)
+    @Convert(converter = ImagemConteudoConvert.class)
     private List<Imagem> imagens;
 
-	@ManyToMany
-	@JoinTable(name = "tb_content_terms", joinColumns = {
-			@JoinColumn(name = "id_content", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "id_term", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
-							@UniqueConstraint(columnNames = { "id_content", "id_term" }) },
-                            foreignKey = @ForeignKey(value =  ConstraintMode.CONSTRAINT, name = "fk_term_content_cnt_id"),
-                            inverseForeignKey = @ForeignKey(value =  ConstraintMode.CONSTRAINT, name = "fk_content_term_id"))
+    @ManyToMany
+    @JoinTable(name = "tb_content_terms", joinColumns = {
+            @JoinColumn(name = "id_content", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_term", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
+                            @UniqueConstraint(columnNames = { "id_content",
+                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_content_cnt_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_content_term_id"))
     private Set<Termo> termos;
+
+    @ManyToMany
+    @JoinTable(name = "tb_page_file", joinColumns = {
+            @JoinColumn(name = "id_page", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_file", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
+                            @UniqueConstraint(columnNames = { "id_page",
+                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_page_page_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_page_file_id"))
+    private Set<Arquivo> arquivos;
 }
