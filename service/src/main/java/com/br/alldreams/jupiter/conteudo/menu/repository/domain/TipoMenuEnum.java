@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.br.alldreams.jupiter.site.repository.domain;
+package com.br.alldreams.jupiter.conteudo.menu.repository.domain;
 
 /**
  * @author Jorge Demetrio
