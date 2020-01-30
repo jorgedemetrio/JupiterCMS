@@ -52,6 +52,10 @@ public class CombinacaoProduto implements Serializable {
     private Double maxCombination;
 
     @NotNull
+    @Column(name = "stock", insertable = true, updatable = true, nullable = false)
+    private Double estoque;
+
+    @NotNull
     @Column(name = "min_combinations", insertable = true, updatable = true, nullable = false)
     private Double minCombination;
 

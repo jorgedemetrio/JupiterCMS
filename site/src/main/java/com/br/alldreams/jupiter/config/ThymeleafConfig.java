@@ -18,4 +18,5 @@ public class ThymeleafConfig {
 //org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter
 //org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
 
+
 }
