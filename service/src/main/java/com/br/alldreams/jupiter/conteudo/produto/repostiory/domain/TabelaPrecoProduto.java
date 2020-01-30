@@ -1,57 +1,66 @@
 /**
  *
  */
-package com.br.alldreams.jupiter.base.domain;
+package com.br.alldreams.jupiter.conteudo.produto.repostiory.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.validation.annotation.Validated;
+
+import com.br.alldreams.jupiter.base.domain.StatusEnum;
 import com.br.alldreams.jupiter.site.repository.domain.Site;
 import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * @author Jorge Demetrio
- * @since 15 de jan de 2020 00:32:59
  * @version 1.0
+ * @since 24 de jan de 2020 19:59:35
  */
-@Getter
-@Setter
+@Data
+@Validated
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class ControleInformacao implements Serializable {
-
+@Table(name = "tb_price_list_product")
+public class TabelaPrecoProduto implements Serializable {
 
     /**
      *
      */
-    private static final long serialVersionUID = 754453971544664891L;
+    private static final long serialVersionUID = -6366322402218892508L;
+
+
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", insertable = true, updatable = false, nullable = false, length = 200)
-    private UUID id;
+    @EmbeddedId
+    private PkTabelaPrecoProduto id;
+
+    @NotNull
+    @Column(name = "price", insertable = true, updatable = true, nullable = false)
+    private Double preco;
+
+    @NotNull
+    @Column(name = "minimun", insertable = true, updatable = true, nullable = false)
+    private Double quantidadeMinima;
+
+    @NotNull
+    @Column(name = "status", insertable = true, updatable = true, nullable = false)
+    private StatusEnum status;
 
     @ManyToOne
     @JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
     private Usuario criador;
-
-
 
     @NotEmpty
     @Column(name = "ip_creator", insertable = true, updatable = false, nullable = false, length = 20)
@@ -64,4 +73,8 @@ public abstract class ControleInformacao implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_site", insertable = true, updatable = false, nullable = true)
     private Site site;
+
+    @ManyToOne
+    @JoinColumn(name = "last_version", insertable = true, updatable = false, nullable = true)
+    private TabelaPrecoProduto versaoAnterior;
 }

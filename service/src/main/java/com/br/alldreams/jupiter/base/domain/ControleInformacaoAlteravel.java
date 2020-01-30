@@ -11,6 +11,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 
@@ -42,5 +43,9 @@ public abstract class ControleInformacaoAlteravel extends ControleInformacao {
 
     @Column(name = "updated_date", insertable = true, updatable = false, nullable = false)
     private Date dataAlteracao;
+
+    @NotEmpty
+    @Column(name = "version", insertable = true, updatable = true, nullable = false, length = 250)
+    private String versao;
 
 }

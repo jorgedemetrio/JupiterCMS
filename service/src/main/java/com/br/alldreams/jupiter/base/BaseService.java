@@ -77,6 +77,15 @@ public abstract class BaseService extends BaseCommonsService {
         entity.setDataCriacao(new Date());
         entity.setIpCriador(request.getRemoteAddr());
         entity.setSite(getSite());
+        return entity;
+    }
+
+    public <T extends ControleInformacaoAlteravel> T setDadosCricao(final T entity) throws SemPermissaoServiceException, SiteNaoExisteServiceException {
+        entity.setId(null);
+        entity.setCriador(getUsuarioLogado());
+        entity.setDataCriacao(new Date());
+        entity.setIpCriador(request.getRemoteAddr());
+        entity.setSite(getSite());
         entity.setVersao("1");
         return entity;
     }

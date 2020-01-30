@@ -23,6 +23,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
+import com.br.alldreams.jupiter.conteudo.arquivo.repository.domain.Arquivo;
 import com.br.alldreams.jupiter.conteudo.base.repository.convert.ImagemConteudoConvert;
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.BaseConteudo;
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.Imagem;
@@ -75,4 +76,12 @@ public class Pagina extends BaseConteudo implements Serializable {
                             @UniqueConstraint(columnNames = { "id_content",
                                     "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_content_cnt_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_content_term_id"))
     private Set<Termo> termos;
+
+    @ManyToMany
+    @JoinTable(name = "tb_page_file", joinColumns = {
+            @JoinColumn(name = "id_page", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_file", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
+                            @UniqueConstraint(columnNames = { "id_page",
+                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_page_page_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_page_file_id"))
+    private Set<Arquivo> arquivos;
 }
