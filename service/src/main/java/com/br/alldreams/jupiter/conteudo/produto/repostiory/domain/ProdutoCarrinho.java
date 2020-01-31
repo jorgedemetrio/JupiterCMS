@@ -48,7 +48,7 @@ public class ProdutoCarrinho {
     @JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
     private Usuario criador;
 
-    @notn
+    @NotNull
     @Column(name = "quantity", insertable = true, updatable = true, nullable = false)
     private Long quantidade;
 
