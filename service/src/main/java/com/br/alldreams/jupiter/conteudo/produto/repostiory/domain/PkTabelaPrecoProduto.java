@@ -24,6 +24,11 @@ import lombok.Data;
 @Embeddable
 public class PkTabelaPrecoProduto implements Serializable {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 5517879188331941883L;
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_prince_liest", insertable = true, updatable = false, nullable = false)
