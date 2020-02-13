@@ -76,5 +76,5 @@ public class TabelaPrecoProduto implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "last_version", insertable = true, updatable = false, nullable = true)
-    private TabelaPrecoProduto versaoAnterior;
+    private TabelaDePreco versaoAnterior;
 }

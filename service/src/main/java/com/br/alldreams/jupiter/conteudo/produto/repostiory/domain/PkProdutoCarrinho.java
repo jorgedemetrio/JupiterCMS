@@ -12,31 +12,34 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.validation.annotation.Validated;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Jorge Demetrio
+ * @since 30 de jan de 2020 00:30:53
  * @version 1.0
- * @since 24 de jan de 2020 20:00:13
  */
-@Validated
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
-public class PkTabelaPrecoProduto implements Serializable {
+@Validated
+public class PkProdutoCarrinho implements Serializable {
 
     /**
      *
      */
-    private static final long serialVersionUID = 5517879188331941883L;
-
-    @NotNull
-    @ManyToOne
-    @JoinColumn(name = "id_prince_liest", insertable = true, updatable = false, nullable = false)
-    private TabelaDePreco tabelaPreco;
+    private static final long serialVersionUID = -8943652020106054397L;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "id_product", insertable = true, updatable = false, nullable = false)
     private Produto produto;
 
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_cart", insertable = true, updatable = false, nullable = false)
+    private Carrinho carrinho;
 }
