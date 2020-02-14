@@ -20,6 +20,7 @@ import org.springframework.validation.annotation.Validated;
 
 import com.br.alldreams.jupiter.conteudo.base.repository.domain.StatusConteudoEnum;
 import com.br.alldreams.jupiter.site.repository.domain.Site;
+import com.br.alldreams.jupiter.usuario.repository.domain.Usuario;
 
 import lombok.Data;
 
@@ -43,9 +44,9 @@ public class ProdutoCarrinho {
     @EmbeddedId
     private PkProdutoCarrinho id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
-//    private Usuario criador;
+    @ManyToOne
+    @JoinColumn(name = "id_user_created", insertable = true, updatable = false, nullable = true)
+    private Usuario criador;
 
     @NotNull
     @Column(name = "quantity", insertable = true, updatable = true, nullable = false)

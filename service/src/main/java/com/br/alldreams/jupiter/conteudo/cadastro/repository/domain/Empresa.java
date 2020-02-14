@@ -3,8 +3,11 @@
  */
 package com.br.alldreams.jupiter.conteudo.cadastro.repository.domain;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -51,13 +54,13 @@ public class Empresa extends ControleInformacaoAlteravel {
     @CNPJ
     @Column(name = "national_tax_num", insertable = true, updatable = true, nullable = true, length = 20)
     private String cnpj;
-//
-//    @OneToMany(mappedBy = "empresa")
-//    private List<TelefoneEmpresa> telefones;
-//
-//    @OneToMany(mappedBy = "empresa")
-//    private List<EmailEmpresa> emails;
-//
-//    @OneToMany(mappedBy = "empresa")
-//    private List<EnderecoEmpresa> enderecos;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<TelefoneEmpresa> telefones;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<EmailEmpresa> emails;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<EnderecoEmpresa> enderecos;
 }
