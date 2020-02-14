@@ -78,10 +78,10 @@ public class Produto extends BaseConteudo {
     private MedicaoProdutoEnum medicao;
 
     @OneToMany(mappedBy = "id.produtoPrincipal")
-    private Set<Produto> combinacoes;
+    private Set<CombinacaoProduto> combinacoes;
 
-    @ManyToMany(mappedBy = "id.produtoPrincipal")
-    private Set<Produto> assossiados;
+    @OneToMany(mappedBy = "id.produtoPrincipal")
+    private Set<AssociacaoProduto> assossiados;
 
     @OneToMany(mappedBy = "id.produto")
     private Set<TabelaPrecoProduto> precos;
@@ -107,7 +107,7 @@ public class Produto extends BaseConteudo {
             @JoinColumn(name = "id_product", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
                     @JoinColumn(name = "id_file", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
                             @UniqueConstraint(columnNames = { "id_product",
-                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_product_prod_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_product_file_id"))
+                                    "id_file" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_product_prod_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_product_file_id"))
     private Set<Arquivo> arquivos;
 
 }

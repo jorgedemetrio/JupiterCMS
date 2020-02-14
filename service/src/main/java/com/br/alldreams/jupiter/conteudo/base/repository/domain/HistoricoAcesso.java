@@ -25,6 +25,11 @@ import lombok.Data;
 @Table(name = "tb_history_access")
 public class HistoricoAcesso extends ControleInformacao {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 2771531578930823385L;
+
     @NotEmpty
     @Column(name = "page", insertable = true, updatable = false, nullable = false, length = 250)
     private String pagina;

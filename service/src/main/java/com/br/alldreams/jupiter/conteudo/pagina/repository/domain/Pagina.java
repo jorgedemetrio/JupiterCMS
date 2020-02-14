@@ -82,6 +82,6 @@ public class Pagina extends BaseConteudo implements Serializable {
             @JoinColumn(name = "id_page", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
                     @JoinColumn(name = "id_file", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
                             @UniqueConstraint(columnNames = { "id_page",
-                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_page_page_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_page_file_id"))
+                                    "id_file" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_page_page_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_page_file_id"))
     private Set<Arquivo> arquivos;
 }

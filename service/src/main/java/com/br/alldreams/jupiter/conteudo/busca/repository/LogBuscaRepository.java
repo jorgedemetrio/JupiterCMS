@@ -11,12 +11,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.br.alldreams.jupiter.conteudo.busca.repository.domain.LogBusca;
+
 /**
  * @author Jess
  * @version 1.0
  * @since 22 de jan de 2020 06:18:48
  */
-public interface LogBusca extends JpaRepository<LogBusca, UUID> {
+public interface LogBuscaRepository extends JpaRepository<LogBusca, UUID> {
 
     @Query("SELECT g FROM LogBusca as g JOIN g.site as s WHERE s.id = :site AND g.id = :id AND g.status = 'A' ")
     LogBusca pegarPorId(@Param("id") UUID id, @Param("site") UUID site);

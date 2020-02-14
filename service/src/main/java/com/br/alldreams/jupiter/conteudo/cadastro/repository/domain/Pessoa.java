@@ -73,8 +73,8 @@ public class Pessoa extends ControleInformacaoAlteravel {
     @JoinTable(name = "tb_person_file", joinColumns = {
             @JoinColumn(name = "id_person", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
                     @JoinColumn(name = "id_file", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
-                            @UniqueConstraint(columnNames = { "id_page",
-                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_page_page_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_page_file_id"))
+                            @UniqueConstraint(columnNames = { "id_person",
+                                    "id_file" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_page_page_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_page_file_id"))
 
     private List<Empresa> empresas;
 }

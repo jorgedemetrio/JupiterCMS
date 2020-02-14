@@ -14,11 +14,11 @@ spring:
     password: ${db.pass}
     driver-class-name: com.mysql.cj.jdbc.Driver
     
-  cache:
-    type: redis
-  redis:
-    host: ${redis.server}
-    port: ${redis.port}
+#  cache:
+#    type: redis
+#  redis:
+#    host: ${redis.server}
+#    port: ${redis.port}
 
 dynamodb:
   region: us-east-1
