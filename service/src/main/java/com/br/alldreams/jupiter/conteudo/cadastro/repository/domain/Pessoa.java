@@ -18,12 +18,14 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.validation.annotation.Validated;
 
 import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.StatusEnum;
 
 import lombok.Data;
 
@@ -77,4 +79,8 @@ public class Pessoa extends ControleInformacaoAlteravel {
                                     "id_file" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_page_page_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_file_page_file_id"))
 
     private List<Empresa> empresas;
+
+    @NotNull
+    @Column(name = "status", insertable = true, updatable = true, nullable = false, length = 1)
+    private StatusEnum status;
 }

@@ -10,12 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.br.CNPJ;
 import org.springframework.validation.annotation.Validated;
 
 import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.StatusEnum;
 
 import lombok.Data;
 
@@ -54,6 +56,10 @@ public class Empresa extends ControleInformacaoAlteravel {
     @CNPJ
     @Column(name = "national_tax_num", insertable = true, updatable = true, nullable = true, length = 20)
     private String cnpj;
+
+    @NotNull
+    @Column(name = "status", insertable = true, updatable = true, nullable = false, length = 1)
+    private StatusEnum status;
 
     @OneToMany(mappedBy = "empresa")
     private List<TelefoneEmpresa> telefones;

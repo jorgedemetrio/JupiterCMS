@@ -9,11 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.validation.annotation.Validated;
 
 import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.StatusEnum;
 
 import lombok.Data;
 
@@ -44,4 +46,8 @@ public class RespostaEnquete extends ControleInformacaoAlteravel {
     @ManyToOne
     @JoinColumn(name = "id_survey", insertable = true, updatable = true, nullable = true)
     private Enquete enquete;
+
+    @NotNull
+    @Column(name = "status", insertable = true, updatable = true, nullable = false, length = 1)
+    private StatusEnum status;
 }
