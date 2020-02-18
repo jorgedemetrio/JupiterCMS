@@ -71,7 +71,7 @@ public class Contato extends BaseConteudo implements Serializable {
             @JoinColumn(name = "id_content", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
                     @JoinColumn(name = "id_contact", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
                             @UniqueConstraint(columnNames = { "id_contact",
-                                    "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_contact_cnt_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_contact_term_id"))
+                                    "id_content" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_contact_cnt_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_contact_term_id"))
     private Set<Termo> termos;
 
 }

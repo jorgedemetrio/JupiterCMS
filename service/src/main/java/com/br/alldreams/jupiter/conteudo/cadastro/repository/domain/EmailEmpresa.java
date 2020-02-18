@@ -16,6 +16,7 @@ import javax.validation.constraints.Size;
 import org.springframework.validation.annotation.Validated;
 
 import com.br.alldreams.jupiter.base.domain.ControleInformacaoAlteravel;
+import com.br.alldreams.jupiter.base.domain.StatusEnum;
 
 import lombok.Data;
 
@@ -55,4 +56,8 @@ public class EmailEmpresa extends ControleInformacaoAlteravel {
     @ManyToOne
     @JoinColumn(name = "id_company", insertable = true, updatable = false, nullable = false)
     private Empresa empresa;
+
+    @NotNull
+    @Column(name = "status", insertable = true, updatable = true, nullable = false, length = 1)
+    private StatusEnum status;
 }

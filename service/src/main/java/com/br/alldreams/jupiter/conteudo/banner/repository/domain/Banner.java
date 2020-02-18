@@ -70,9 +70,9 @@ public class Banner extends BaseConteudo implements Serializable {
 
     @ManyToMany
     @JoinTable(name = "tb_banners_terms", joinColumns = {
-            @JoinColumn(name = "id_banners", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
+            @JoinColumn(name = "id_banner", nullable = false, insertable = false, updatable = false) }, inverseJoinColumns = {
                     @JoinColumn(name = "id_term", nullable = false, insertable = false, updatable = false) }, uniqueConstraints = {
-                            @UniqueConstraint(columnNames = { "id_banners",
+                            @UniqueConstraint(columnNames = { "id_banner",
                                     "id_term" }) }, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_term_banners_bann_id"), inverseForeignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "fk_banners_term_id"))
     private Set<Termo> termos;
 
