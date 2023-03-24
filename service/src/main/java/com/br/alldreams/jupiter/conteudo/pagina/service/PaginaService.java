@@ -19,7 +19,9 @@ import com.br.alldreams.jupiter.base.BaseService;
 import com.br.alldreams.jupiter.base.exception.service.DadosInvalidosServiceException;
 import com.br.alldreams.jupiter.base.exception.service.ErroInternoServiceException;
 import com.br.alldreams.jupiter.base.exception.service.ItemNaoEncontradoServiceException;
+import com.br.alldreams.jupiter.base.exception.service.SemPermissaoServiceException;
 import com.br.alldreams.jupiter.base.exception.service.SiteNaoExisteServiceException;
+import com.br.alldreams.jupiter.conteudo.base.repository.domain.StatusConteudoEnum;
 import com.br.alldreams.jupiter.conteudo.pagina.dto.PaginaDTO;
 import com.br.alldreams.jupiter.conteudo.pagina.repository.PaginaRepository;
 import com.br.alldreams.jupiter.conteudo.pagina.repository.domain.Pagina;
@@ -42,11 +44,23 @@ public class PaginaService extends BaseService {
     @Autowired
     private PaginaConvert conteudoConvert;
 
-    public void apagar(final String codigo) throws DadosInvalidosServiceException, ErroInternoServiceException {
+
+    public void apagar(final String codigo) throws DadosInvalidosServiceException, ErroInternoServiceException, ItemNaoEncontradoServiceException,
+            SemPermissaoServiceException, SiteNaoExisteServiceException {
+
         if (Objects.isNull(codigo) || codigo.isEmpty()) {
             throw createException("campos-invalidos", DadosInvalidosServiceException.class, "codigo");
         }
-        repositorio.deleteById(UUID.fromString(codigo));
+
+        // Caso fosse uma remoção lógica:
+        // repositorio.deleteById(UUID.fromString(codigo));
+        Pagina pagina = this.repositorio.pegarPorId(UUID.fromString(codigo), getSite().getId());
+        if (isNull(pagina)) {
+            throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Pagina");
+        }
+        pagina = setDadosAlteracao(pagina);
+        pagina.setStatus(StatusConteudoEnum.DELETADO);
+        this.repositorio.save(pagina);
     }
 
     public Page<PaginaDTO> buscar(final String titulo, final Integer pagina, final Integer itensPorPagina, final String ordem, final String sentido)

@@ -132,12 +132,13 @@ public class GrupoService extends BaseService {
         if (isNull(idGrupo) || idGrupo.isEmpty()) {
             throw createException("campo-abrigatorio", DadosInvalidosServiceException.class, "Código do grupo");
         }
-        final Grupo grupo = this.repositorio.pegarPorId(UUID.fromString(idGrupo), getSite().getId());
+        Grupo grupo = this.repositorio.pegarPorId(UUID.fromString(idGrupo), getSite().getId());
         if (isNull(grupo)) {
             throw createException("nao-encontrado", ItemNaoEncontradoServiceException.class, "Grupo");
         }
+        grupo = setDadosAlteracao(grupo);
         grupo.setStatus(StatusEnum.DELETADO);
-        this.repositorio.delete(setDadosCricao(grupo));
+        this.repositorio.save(grupo);
     }
 
     /**
